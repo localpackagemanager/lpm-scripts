@@ -1,0 +1,35 @@
+
+#
+# Description: bowtie
+# Tested: SL6.1
+# updatecheckurl=http://bowtie-bio.sourceforge.net/index.shtml
+
+# source URL. It specifies where to download from.
+# Use this URL for 64bit (Intel/AMD x86_64)
+if{$btype eq 'x86_64'} source=http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.1.2/bowtie-1.1.2-linux-x86_64.zip
+# Use this URL for 32bit (Intel/AMD x86)
+if{$btype eq 'x86'} source=http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.1.2/bowtie-1.1.2-linux-i386.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=bowtie
+ver=1.1.2
+
+# URL. Just for information.
+url=http://bowtie-bio.sourceforge.net/index.shtml
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+custominstall
+cd bowtie-*
+cp bowtie bowtie-build bowtie-inspect $BIN_DIR/
+EOC
