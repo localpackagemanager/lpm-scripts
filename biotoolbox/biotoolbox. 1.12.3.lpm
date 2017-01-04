@@ -1,0 +1,58 @@
+#
+# Description: biotoolbox
+# Tested: CentOS 6.4
+# updatecheckurl=https://github.com/tjparnell/biotoolbox/commits/master
+
+# source URL. It specifies where to download from.
+source=https://biotoolbox.googlecode.com/files/biotoolbox_v1.12.3.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=biotoolbox
+ver=1.12.3
+
+# URL. Just for information.
+url=https://code.google.com/p/biotoolbox/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd biotoolbox
+echo -----------------------------------------------------------------------------------------
+echo We will check the dependencies interactively. You may have to type something to proceed.
+echo If you have not done \"lpm initcpan\", and you are not root, you would fail at installing
+echo Perl modules. Some Perl modules are optionsl, so build failure may not be a problem for
+echo you when you do not use scripts that use optinoal features.
+echo -----------------------------------------------------------------------------------------
+./check_dependencies.pl
+EOC
+
+# make install
+custominstall
+cd biotoolbox
+cp scripts/*.pl $BIN_DIR/
+cp -r lib/tim* $LIB_DIR/perl5
+cp biotoolbox.cfg $ETC_DIR/
+chmod 600 $ETC_DIR/biotoolbox.cfg
+echo -----------------------------------------------------------------------------------------
+echo If you have not done \"lpm initcpan\" before, you may fail to execute the installed
+echo scripts because of missing Perl modules \(as Perl says\).
+echo -----------------------------------------------------------------------------------------
+echo Configuration file is copied to $ETC_DIR/biotoolbox.cfg
+echo You may need to customize it before use particularly when you use database.
+echo -----------------------------------------------------------------------------------------
+EOC
+
+loadstartup
+setini
+export BIOTOOLBOX=$LPM_ETC/biotoolbox.cfg
+EOC
+savestartup
+

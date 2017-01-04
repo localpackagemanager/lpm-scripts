@@ -1,0 +1,43 @@
+#
+# Description: BLASR Basic Local Alignment with Successive Refinement
+# Tested: CentOS 6.6,RHEL6.1
+# Depends: hdf5
+# updatecheckurl=https://github.com/PacificBiosciences/blasr/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/PacificBiosciences/blasr.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=blasr
+
+# URL. Just for information.
+url=https://github.com/PacificBiosciences/blasr
+
+# download the package
+download
+
+# extract files
+# extract
+
+# configure
+replaceregexp
+makefile
+/^LD_LIBRARY_PATH=/
+s/.*/LDLIBS+=-lrt/
+
+
+# make
+shell
+git clone https://github.com/PacificBiosciences/blasr_libcpp.git libcpp
+./configure.py --no-pbbam
+sed -i 's/^LD_LIBRARY_PATH=.*//' makefile */makefile 
+make $LPM_MAKE_OPTION build-submodule
+make $LPM_MAKE_OPTION 
+EOC
+
+# make install
+custominstall
+install -m 755 blasr $BIN_DIR
+cd utils
+install -m 755 loadPulses pls2fasta samtoh5 samtom4 samFilter toAfg sawriter sdpMatcher $BIN_DIR
+EOC

@@ -1,0 +1,34 @@
+
+#
+# Description: BFAST Blat-like Fast Accurate Search Tool
+# Tested: SL6.1
+# updatecheckurl=https://sourceforge.net/projects/bfast/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/bfast/files/bfast/0.7.0/bfast-0.7.0a.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://sourceforge.net/apps/mediawiki/bfast/index.php?title=Main_Page
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+cd bfast*/
+./configure --prefix=$LIB_DIR/../
+make
+EOC
+
+# make install
+custominstall
+cd bfast*/
+make install
+EOC

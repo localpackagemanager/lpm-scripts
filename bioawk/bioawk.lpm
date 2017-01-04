@@ -1,0 +1,36 @@
+#
+# Description: BioAwk
+# Tested: CentOS 6.4
+# updatecheckurl=https://github.com/lh3/bioawk/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/lh3/bioawk.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=bioawk
+# ver=
+
+# URL. Just for information.
+url=https://github.com/lh3/bioawk
+
+# download the package
+download
+
+# extract files
+
+# configure
+
+# make
+make
+
+# make install
+custominstall
+cp bioawk maketab $BIN_DIR/
+cp awk.1 $MAN_DIR/man1/bioawk.1
+EOC
+
+shell
+echo We copied the manual page to $MAN_DIR/man1/bioawk.1 so as not to conflict with the original awk's man page.
+echo You can type \"man bioawk\" to see the manual.
+EOC
+

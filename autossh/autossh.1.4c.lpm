@@ -1,0 +1,28 @@
+#
+# Description: autossh
+# updatecheckurl=http://www.harding.motd.ca/autossh/CHANGES
+
+# source URL. It specifies where to download from.
+source=http://www.harding.motd.ca/autossh/autossh-1.4c.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=autossh
+ver=1.4c
+
+# URL. Just for information.
+url=http://www.harding.motd.ca/autossh/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

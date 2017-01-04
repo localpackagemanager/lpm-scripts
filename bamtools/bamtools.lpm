@@ -1,0 +1,44 @@
+
+
+#
+# Description: BAMtools is a project that provides both a C++ API and a command-line toolkit for reading,
+# writing, and manipulating BAM (genome alignment) files.
+# Tested: SL6.1
+# Depends: cmake
+# updatecheckurl=https://github.com/pezmaster31/bamtools/commits/master
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/pezmaster31/bamtools
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://seqanswers.com/wiki/BamTools
+
+# download the package
+download
+
+# extract files
+#extract
+
+shell
+cd src
+cmake ..
+make
+EOC
+
+custominstall
+cp ./bin/bam* $BIN_DIR/
+cp ./lib/libbamtools.so* $LIB_DIR/
+cp ./lib/libbamtools-utils.so* $LIB_DIR/
+cp ./lib/libjsoncpp.so* $LIB_DIR/
+cp -r ./include/* $INCLUDE_DIR/
+EOC
+
+# loadstartup
+# setlogin
+# export BAM_ROOT=$LPM_BIN/../
+# EOC
+# savestartup

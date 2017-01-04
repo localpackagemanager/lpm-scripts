@@ -1,0 +1,31 @@
+
+#
+# Description: The BAM format is an efficient method for storing and sharing data from modern, highly parallel sequencers. While primarily used for storing alignment information, BAMs can (and frequently do) store unaligned reads as well.
+# 
+# Tested: SL6.1
+# Depends: 
+# updatecheckurl=https://gsl.hudsonalpha.org/information/software/bam2fastq
+
+# source URL. It specifies where to download from.
+source=http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.hudsonalpha.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+make
+
+# make install
+custominstall
+cp bam2fastq $LPM_BIN
+EOC

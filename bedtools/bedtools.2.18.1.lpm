@@ -1,0 +1,40 @@
+#
+# Description: BEDTools is an extensive suite of utilities for comparing genomic features in BED format.
+# Tested: CentOS 6.4
+# updatecheckurl=https://github.com/arq5x/bedtools2/tags
+
+# source URL. It specifies where to download from.
+source=https://github.com/arq5x/bedtools2/releases/download/v2.18.1/bedtools-2.18.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=bedtools
+# ver=
+
+# URL. Just for information.
+url=https://github.com/arq5x/bedtools2
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+replaceregexp
+bedtools2/Makefile
+m|-lbamtools|
+s|-lbamtools|src/utils/BamTools/lib/libbamtools.a|
+
+# make
+shell
+cd bedtools2
+make $LPM_MAKE_OPTION
+EOC
+
+# make install
+custominstall
+cd bedtools2
+cp bin/bedtools $BIN_DIR/
+EOC

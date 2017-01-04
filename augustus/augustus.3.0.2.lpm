@@ -1,0 +1,48 @@
+#
+# Description: gene prediction program Augustus
+# Tested: RHEL 6.1
+# Depends: boost
+# updatecheckurl=http://bioinf.uni-greifswald.de/augustus/binaries/
+# The directory structure changed in version 3.
+#
+
+# source URL. It specifies where to download from.
+source=http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.0.2.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=augustus
+ver=3.0.2
+
+# URL. Just for information.
+url=http://bioinf.uni-greifswald.de/augustus/
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+cd src
+cp Makefile Makefile.orig
+sed 's/ \$(LIBS/ $(LDFLAGS) $(LIBS/' Makefile.orig > Makefile
+EOC
+
+make
+
+custominstall
+
+mkdir -p $OPT_DIR/augustus
+rsync -av ../augustus-${PACKAGE_VER} $OPT_DIR/augustus/
+# the line below is needed for the shell execution in the last part of this file
+cd $OPT_DIR/augustus
+ln -fns augustus-${PACKAGE_VER} current
+EOC
+
+loadstartup
+setini
+export AUGUSTUS_HOME=$LPM_OPT/augustus/current
+export AUGUSTUS_CONFIG_PATH=$AUGUSTUS_HOME/config
+export PATH=$AUGUSTUS_HOME/bin:$AUGUSTUS_HOME/scripts:$PATH
+EOC
+savestartup

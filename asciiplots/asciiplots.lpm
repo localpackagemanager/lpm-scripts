@@ -1,0 +1,29 @@
+#
+# Description: ASCII plot
+# Tested: CentOS 6.5
+# updatecheckurl=https://github.com/dzerbino/ascii_plots/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/dzerbino/ascii_plots.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=ascii_plots
+# ver=
+
+# URL. Just for information.
+url=https://github.com/dzerbino/ascii_plots
+
+# download the package
+download
+
+# extract files
+
+# configure
+
+# make
+# make
+
+# make install
+custominstall
+cp cor curve hist scatter summary $BIN_DIR/
+EOC

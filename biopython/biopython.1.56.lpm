@@ -1,0 +1,35 @@
+#
+# Description: BioPython
+# Tested: SL6.1
+# updatecheckurl=http://biopython.org/wiki/Download
+
+# source URL. It specifies where to download from.
+source=http://biopython.org/DIST/biopython-1.56.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://www.biopython.org/wiki/Biopython
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+python setup.py build
+python setup.py test
+EOC
+
+# make install
+custominstall
+python setup.py install
+EOC
+

@@ -1,0 +1,41 @@
+#
+# Description: Aspera Connect Client (commercial; only client is available free of charge; Linux; x86_64)
+# Tested: CentOS 6.3
+# updatecheckurl=http://downloads.asperasoft.com/en/downloads/8?list
+
+# source URL. It specifies where to download from.
+source=aspera-connect-3.3.3.81344-linux-64.sh
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=aspera-connect-client
+ver=3.3.3.81344
+
+# URL. Just for information.
+url=http://www.asperasoft.com/en/downloads/8?list
+
+# download the package
+manualdownload
+
+noneedtoextract
+
+shell
+if [ ! -e $OPT_DIR/aspera ]; then
+    mkdir $OPT_DIR/aspera
+fi
+EOC
+
+replaceregexp
+aspera-connect-3.3.3.81344-linux-64.sh
+m|^INSTALL_DIR=|
+s|=.*|=\$OPT_DIR/aspera|
+# extract files
+# extract
+
+# make install
+custominstall
+export OPT_DIR
+$ARCHIVE_FILE
+cd $BIN_DIR
+ln -s ../opt/aspera/bin/ascp .
+EOC
+
