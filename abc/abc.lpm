@@ -1,0 +1,12 @@
+shell
+
+
+
+VER=`echo $DIST_DESC | perl -nle 'print $1 if(/([\d\.]+)$/)'`
+
+echo “$OS-$VER-$ARCH“
+
+
+
+EOC
+
