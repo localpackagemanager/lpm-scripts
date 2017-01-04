@@ -1,0 +1,33 @@
+#
+# Description: ABySS assembler (Non-MPI)
+# Tested: CentOS 6.2
+# updatecheckurl=http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases
+# source URL. It specifies where to download from.
+source=http://www.bcgsc.ca/downloads/abyss/abyss-1.5.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+ver=1.5.1
+
+# URL. Just for information.
+url=http://www.bcgsc.ca/platform/bioinfo/software/abyss
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+
+CXX=g++ CC=gcc ./configure --prefix=$LOCAL_DIR --disable-openmp
+
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+

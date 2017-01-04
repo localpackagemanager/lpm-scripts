@@ -1,0 +1,47 @@
+#
+# Description: ABySS assembler (MPI)
+# Tested: RHEL 6.4
+# Depends: sparsehash
+# updatecheckurl=http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases
+# <note>
+# mpi library path and include dir for mpi.h does not work automatically.
+# please adapt to your system configuration.
+# make sure that correct mpirun comes first in the path if multiple
+# mpirun are present in the system.
+# </note>
+
+# source URL. It specifies where to download from.
+#source=http://www.bcgsc.ca/downloads/abyss/abyss-1.5.1.tar.gz
+source=https://github.com/bcgsc/abyss/releases/download/1.9.0/abyss-1.9.0.tar.gz
+
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+ver=1.9.0
+
+# URL. Just for information.
+url=http://www.bcgsc.ca/platform/bioinfo/software/abyss
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+
+#./configure --prefix=$LOCAL_DIR --with-mpi=/usr/lib64/openmpi --enable-maxk=128 CPPFLAGS=-I$INCLUDE_DIR\ -I/usr/include/openmpi-x86_64
+# for CentOS6.6
+
+./configure --prefix=$LOCAL_DIR --with-mpi=/usr/mpi/gcc/openmpi-1.6.5 --enable-maxk=128 CPPFLAGS=-I$INCLUDE_DIR\ -I/usr/mpi/gcc/openmpi-1.6.5/include
+# for NIG phase2 system
+
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+

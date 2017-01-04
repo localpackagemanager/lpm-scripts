@@ -1,0 +1,55 @@
+
+#
+# Description: AMOS is a collection of tools and class interfaces for the assembly of DNA reads.
+# Tested: SL6.1
+# updatecheckurl=https://sourceforge.net/projects/amos/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/amos/files/amos/3.1.0/amos-3.1.0.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://sourceforge.net/projects/amos/
+
+# download the package
+download
+
+# extract files
+extract
+
+# apply patch shown at
+# http://sourceforge.net/tracker/index.php?func=detail&aid=3554072&group_id=134326&atid=729719
+
+shell 
+pwd
+patch -p1 <<EOP
+--- amos-3.1.0/src/Align/align.cc	2011-07-25 08:27:26.000000000 +0900
++++ amos-3.1.0/src/Align/align.cc	2012-12-02 23:07:01.404565828 +0900
+@@ -2122,8 +2122,11 @@
+         consensus . erase (0, min_b_lo);
+         for  (i = 0;  i < n;  i ++)
+           {
+-           align [i] . b_lo -= min_b_lo;
+-           align [i] . b_hi -= min_b_lo;
++           if (! align [i] . Is_Empty ())
++             {
++               align [i] . b_lo -= min_b_lo;
++               align [i] . b_hi -= min_b_lo;
++             }
+           }
+        }
+
+EOP 
+EOC
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

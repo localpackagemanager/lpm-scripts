@@ -1,0 +1,31 @@
+
+#
+# Description: ALLPATHS-LG Genome Assembler
+# Tested: CentOS 6.4
+# Depends: gcc4.7+
+# updatecheckurl=ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/allpathslg-48744.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.broadinstitute.org/scientific-community/science/programs/genome-sequencing-and-analysis/computational-rd/computational-
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

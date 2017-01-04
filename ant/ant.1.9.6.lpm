@@ -1,0 +1,38 @@
+#
+# lpm file for ant
+#
+# Description: ant
+# Tested: CentOS 6.6
+# updatecheckurl=http://ftp.yz.yamagata-u.ac.jp/pub/network/apache//ant/README.html
+
+# source URL. It specifies where to download from.
+source=http://ftp.kddilabs.jp/infosystems/apache//ant/binaries/apache-ant-1.9.6-bin.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://ant.apache.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure & make
+# do not need to configure or make because it's Java application...
+
+# install
+custominstall
+cp -r . $OPT_DIR/apache-ant-$PACKAGE_VER
+rm -f $BIN_DIR/ant
+ln -s $OPT_DIR/apache-ant-$PACKAGE_VER/bin/ant $BIN_DIR/
+EOC
+
+loadstartup
+setini
+export ANT_HOME=$LPM_LIB/apache-ant-1.9.6
+EOC
+savestartup

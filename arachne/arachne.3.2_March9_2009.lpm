@@ -1,0 +1,62 @@
+#
+# lpm file for arachne
+#
+# Description: Arachne assembler
+# Tested: SL6.1
+# updatecheckurl=ftp://ftp.broadinstitute.org/pub/crd/ARACHNE/
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.broadinstitute.org/pub/crd/ARACHNE/old_versions/arachne_v3.2_March9_2009.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=arachne
+ver=3.2_March9_2009
+
+# URL. Just for information.
+url=http://www.broadinstitute.org/scientific-community/science/programs/genome-sequencing-and-analysis/computational-rd/computational-
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# didn't work with Intel C++ ver 11.1, so I use gcc instead.
+replaceregexp
+Makefile
+/^COMPILER/
+s/icc/gcc/
+replaceregexp
+Makefile
+/^CPLUSPLUS/
+s/icpc/g++/
+
+# adds missing macros, and make
+shell
+cd arachne_v3-source/
+echo "#define __SIZEOF_LONG__ 8" >> config.h
+echo "#define __SIZEOF_POINTER__ 8" >> config.h
+make
+EOC
+
+# make install
+custominstall
+cd arachne_v3-source/
+mkdir -p $OPT_DIR/arachne/v3
+cp bin/* $OPT_DIR/arachne/v3/
+cp libxerces-c1_5_1-x86_64-gcc430.so $LIB_DIR/
+pushd $OPT_DIR/arachne
+ln -fs v3 current
+popd
+EOC
+
+shell
+echo "------------------------------------------------------"
+echo " To use Arachne, use binaries at $OPT_DIR/arachne/current"
+echo " PATH was not set up in order to avoid name conflict."
+echo "------------------------------------------------------"
+EOC
+
