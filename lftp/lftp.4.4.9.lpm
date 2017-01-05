@@ -1,0 +1,27 @@
+
+#
+# Description: lftp
+# updatecheckurl=ftp://ftp.st.ryukoku.ac.jp/pub/network/ftp/lftp/
+
+# source URL. It specifies where to download from.
+source=http://ftp.yars.free.net/pub/source/lftp/lftp-4.4.9.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+
+# URL. Just for information.
+url=http://lftp.yar.ru/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

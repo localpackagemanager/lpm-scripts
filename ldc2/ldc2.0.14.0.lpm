@@ -1,0 +1,37 @@
+#
+# Description: LDC - the LLVM-based D compiler
+# Tested: Ubuntu 12
+# updatecheckurl=https://github.com/ldc-developers/ldc/releases
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=https://github.com/ldc-developers/ldc/releases/download/v0.14.0/ldc2-0.14.0-linux-x86_64.tar.gz
+if{$osname eq 'linux' && $btype eq 'x86'} source=https://github.com/ldc-developers/ldc/releases/download/v0.14.0/ldc2-0.14.0-linux-x86.tar.gz
+if{$osname eq 'darwin'} source=https://github.com/ldc-developers/ldc/releases/download/v0.14.0/ldc2-0.14.0-osx-x86_64.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=ldc2
+ver=0.14.0
+
+# URL. Just for information.
+url=http://dlang.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+custominstall
+
+DIRN=$(echo ldc2-*)
+if [[ "x" == x$DIRN ]] ; then
+    echo "Failed to detect the directory name, so quit the installation."
+    exit 2
+else
+    cp -r $DIRN $OPT_DIR/
+    cd $BIN_DIR/
+    ln -fs $OPT_DIR/$DIRN/bin/* .
+fi
+
+EOC
+

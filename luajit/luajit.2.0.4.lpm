@@ -1,0 +1,32 @@
+#
+# Description: LuaJIT
+# Tested: CentOS 6.4
+# updatecheckurl=http://luajit.org/download.html
+
+# source URL. It specifies where to download from.
+source=http://luajit.org/download/LuaJIT-2.0.4.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://luajit.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+make
+
+# make install
+# makeinstall
+custominstall
+make install PREFIX=$LOCAL_DIR
+EOC

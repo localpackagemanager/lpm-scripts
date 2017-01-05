@@ -1,0 +1,41 @@
+#
+# Description: bzlib (bzip2)
+# updatecheckurl=http://www.bzip.org/downloads.html
+
+# source URL. It specifies where to download from.
+source=http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.bzip.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+replaceregexp
+Makefile
+m|CFLAGS|
+s|CFLAGS=|CFLAGS=-fPIC |
+
+# make
+make -j 4 -f Makefile-libbz2_so
+make -j 4
+
+# make install
+custominstall
+
+make install PREFIX=$LOCAL_DIR
+cp libbz2.so.$PACKAGE_VER $LIB_DIR
+cd $LIB_DIR
+ln -fs libbz2.so.$PACKAGE_VER libbz2.so.1.0
+
+EOC

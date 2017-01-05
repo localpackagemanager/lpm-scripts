@@ -1,0 +1,35 @@
+
+#
+# Description: LAST  finds similar regions between sequences.
+# Tested: CentOS 6.4
+# updatecheckurl=http://last.cbrc.jp/
+
+# source URL. It specifies where to download from.
+source=http://last.cbrc.jp/archive/last-418.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://last.cbrc.jp/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make
+
+# make install
+# makeinstall
+custominstall
+cd last*/src
+make
+cp lastdb lastal lastex       $BIN_DIR
+EOC

@@ -1,0 +1,35 @@
+
+#
+# Description: libevent
+# Tested: CentOS 6.4
+# updatecheckurl=http://libevent.org/
+
+# source URL. It specifies where to download from.
+source=https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=libevent
+ver=2.0.21
+
+# URL. Just for information.
+url=http://libevent.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+cd libevent-${PACKAGE_VER}-stable
+./configure --prefix=$LOCAL_DIR
+make
+EOC
+
+# make
+#make
+
+# make install
+makeinstall
+

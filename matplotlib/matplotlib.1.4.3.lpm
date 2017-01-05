@@ -1,0 +1,32 @@
+# 
+# Description: matplotlib: a python 2D plotting library
+#
+# Tested: CentOS 6.4
+#
+# Depends:
+# 
+# updatecheckurl=http://matplotlib.org/
+#
+# Use note tag (in comment lines) if you have long explanation that does not fit within a single line.
+# <note>
+#   For Quast
+# </note>
+#
+# source URL. It specifies where to download from.
+source=https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.4.3/matplotlib-1.4.3.tar.gz
+# URL. Just for information. If you upload the script, it will be linked to this URL.
+url=http://matplotlib.org/
+# download the package
+download
+# extract files
+extract
+# configure
+#configure
+# make
+shell
+  python setup.py build
+EOC
+# make install
+custominstall
+  python setup.py install
+EOC

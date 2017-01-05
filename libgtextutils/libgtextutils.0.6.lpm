@@ -1,0 +1,29 @@
+#
+# Description: libgtextutils
+# updatecheckurl=https://github.com/agordon/libgtextutils/tags
+
+# source URL. It specifies where to download from.
+source=http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://hannonlab.cshl.edu/fastx_toolkit/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

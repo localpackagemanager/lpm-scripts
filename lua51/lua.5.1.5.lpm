@@ -1,0 +1,39 @@
+#
+# Description: Lua 5.1.x
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.lua.org/versions.html
+
+# source URL. It specifies where to download from.
+source=http://www.lua.org/ftp/lua-5.1.5.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=lua51
+ver=5.1.5
+topdirname=lua-5.1.5
+
+# URL. Just for information.
+url=http://www.lua.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+if [ x$OS = "xdarwin" ] ; then
+    make macosx
+else
+    make linux
+fi
+EOC
+
+# make install
+# makeinstall
+custominstall
+make install INSTALL_TOP=$LOCAL_DIR
+EOC

@@ -1,0 +1,39 @@
+
+#
+# Description: LAPAK  is a library of Fortran 90 with subroutines for solving
+# the most commonly occurring problems in numerical linear algebra.
+# Tested: SL6.1
+# updatecheckurl=http://www.netlib.org/lapack/#_release_history
+
+# source URL. It specifies where to download from.
+source=http://www.netlib.org/lapack/lapack-3.4.2.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+ver=3.4.2
+
+# URL. Just for information.
+url=http://www.netlib.org/lapack/
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+cp INSTALL/make.inc.gfortran ./make.inc
+make lapacklib
+make blaslib
+EOC
+# configure
+# configure
+
+# make
+# make
+
+# make install
+custominstall
+cp liblapack.a $LPM_LIB
+cp librefblas.a $LPM_LIB
+EOC

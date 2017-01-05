@@ -1,0 +1,30 @@
+#
+# Description: MACS
+# Tested: CentOS6.4
+# Depends: 
+# updatecheckurl=https://github.com/taoliu/MACS/downloads
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/taoliu/MACS.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://liulab.dfci.harvard.edu/MACS/
+
+# download the package
+download
+
+# extract files
+#copyrep
+
+# configure
+
+# make
+
+# make install
+custominstall
+python setup.py install
+EOC

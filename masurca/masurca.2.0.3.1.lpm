@@ -1,0 +1,33 @@
+#
+# Description: MaSuRCA assembler
+# updatecheckurl=http://www.genome.umd.edu/masurca_compile.html
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.genome.umd.edu/pub/MaSuRCA/MaSuRCA-2.0.3.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=masurca
+ver=2.0.3.1
+
+# URL. Just for information.
+url=http://www.genome.umd.edu/masurca.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# NOTE: This package does now allow us to configure... It's a problem!
+# configure
+
+# make
+# NOTE: This package does now allow us to make... It's a problem!
+# make
+
+# make install
+custominstall
+cd MaSuRCA-${PACKAGE_VER}
+DEST=$LOCAL_DIR ./install.sh
+EOC

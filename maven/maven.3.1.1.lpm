@@ -1,0 +1,36 @@
+#
+# Description: maven
+# updatecheckurl=http://maven.apache.org/docs/history.html
+
+# source URL. It specifies where to download from.
+source=http://ftp.kddilabs.jp/infosystems/apache//maven/binaries/apache-maven-3.1.1-bin.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=maven
+ver=3.1.1
+
+# URL. Just for information.
+url=http://maven.apache.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make
+
+# make install
+custominstall
+cp -r $BUILD_DIR/maven-$PACKAGE_VER/apache-maven-$PACKAGE_VER $LIB_DIR
+EOC
+
+loadstartup
+setini
+export PATH=$PATH:$LPM_LIB/apache-maven-3.0.5/bin
+EOC
+savestartup

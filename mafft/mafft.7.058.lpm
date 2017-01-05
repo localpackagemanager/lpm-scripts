@@ -1,0 +1,33 @@
+#
+# Description: Multiple alignment program for amino acid or nucleotide sequences
+# Tested: CentOS 6.4
+# updatecheckurl=http://mafft.cbrc.jp/alignment/software/changelog.html
+
+# source URL. It specifies where to download from.
+source=http://mafft.cbrc.jp/alignment/software/mafft-7.058-with-extensions-src.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=mafft
+ver=7.058
+
+# URL. Just for information.
+url=http://mafft.cbrc.jp/alignment/software/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+shell
+cd mafft-*/core/
+make clean
+make
+EOC
+
+# make install
+custominstall
+cd mafft-*/core
+make install PREFIX=$LOCAL_DIR
+EOC
