@@ -1,0 +1,56 @@
+#
+# Description: ./jq
+# Tested: CentOS 6.4
+# updatecheckurl=https://github.com/stedolan/jq/tags
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://stedolan.github.io/jq/download/linux64/jq
+if{$osname eq 'linux' && $btype eq 'x86'} source=http://stedolan.github.io/jq/download/linux32/jq
+if{$osname eq 'darwin'} source=http://stedolan.github.io/jq/download/osx64/jq
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=jq
+ver=1.3
+
+# URL. Just for information.
+url=http://stedolan.github.io/jq/
+
+# download the package
+download
+
+# make install
+# makeinstall
+custominstall
+chmod 755 $ARCHIVE_DIR/jq
+cp -a $ARCHIVE_DIR/jq	$BIN_DIR/
+cat > $BIN_DIR/jqgrep << 'EOF'
+#!/usr/bin/perl
+use strict;
+use Getopt::Long;
+my $flag_color = 0;
+GetOptions(
+    "color|c" => \$flag_color
+);
+my $cond = join('', @ARGV);
+if($cond eq '') { $cond = "true"; }
+my $escaped_cond = "if $cond then . else null end";
+$escaped_cond =~ s|\\|\\\\|g;
+$escaped_cond =~ s| |\\ |g;
+$escaped_cond =~ s|'|\\'|g;
+$escaped_cond =~ s|"|\\"|g;
+$escaped_cond =~ s|!|\\!|g;
+#my $cmd = "jq -c $escaped_cond | grep -v '^null\$'";
+if($flag_color) {
+    $cmd .= " | jq -c .";
+}
+print STDERR "$cmd\n";
+system $cmd;
+if($? == -1) {
+    die "Could not exec jq";
+}
+if($? & 0x7f) {
+    die "Error on jq";
+}
+EOF
+chmod 0755 $BIN_DIR/jqgrep
+EOC

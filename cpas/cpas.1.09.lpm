@@ -1,0 +1,28 @@
+#
+# Description: cpas (CPp As a Script)
+# Tested: SL6.1
+
+# source URL. It specifies where to download from.
+source=https://github.com/downloads/mkasa/cpas/cpas-1.09.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.kasahara.ws/software_cpas.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

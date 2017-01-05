@@ -1,0 +1,31 @@
+
+#
+# Description: expat 
+# Tested: SL6.1
+# updatecheckurl=https://sourceforge.net/projects/expat/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://sourceforge.net/projects/expat/files/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

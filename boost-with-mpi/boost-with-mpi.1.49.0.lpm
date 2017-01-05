@@ -1,0 +1,52 @@
+#
+# Description: Boost library with Boost.MPI (for C++)
+# Tested: SL6.1
+# updatecheckurl=https://sourceforge.net/projects/boost/files/
+# <note>
+#  You need to make sure that mpicxx is on PATH.
+# </note>
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/boost/boost/1.49.0/boost_1_49_0.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=boost-with-mpi
+ver=1.49.0
+
+# URL. Just for information.
+url=http://www.boost.org/doc/libs/1_60_0/doc/html/mpi.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make
+shell
+cd boost*
+pwd
+./bootstrap.sh
+export BZIP2_INCLUDE=$INCLUDE_DIR
+export BZIP2_LIBPATH=$LIB_DIR
+export ZLIB_INCLUDE=$INCLUDE_DIR
+export ZLIB_LIBPATH=$LIB_DIR
+./bjam --prefix=$LOCAL_DIR --without-python $LPM_MAKE_OPTION
+echo "using mpi ;" >> tools/build/v2/user-config.jam
+./bjam --prefix=$LOCAL_DIR --with-mpi $LPM_MAKE_OPTION
+
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd boost*
+cp -dr boost $INCLUDE_DIR
+cp -dr stage/lib/* $LIB_DIR
+
+EOC
+

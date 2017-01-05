@@ -1,0 +1,33 @@
+#
+# Description: E-utilities for NCBI Entrez Direct
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.Release_Notes
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux'} source=ftp://ftp.ncbi.nih.gov/entrez/entrezdirect/edirect.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=eutils
+ver=2012Aug08
+topdirname=edirect
+
+# URL. Just for information.
+url=http://www.ncbi.nlm.nih.gov/books/NBK179288/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+cp econtact  edirect.pl  edirutil  efetch  efilter  einfo  elink  enotify  epost  eproxy  esearch  esummary  nquire  xtract  $BIN_DIR/
+EOC
+

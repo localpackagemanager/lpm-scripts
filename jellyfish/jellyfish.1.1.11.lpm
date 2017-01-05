@@ -1,0 +1,18 @@
+# Description: JELLYFISH - Fast, Parallel k-mer Counting for DNA (Version 1.1.11)
+# Tested: CentOS6.4
+ # updatecheckurl=http://www.cbcb.umd.edu/software/jellyfish/
+ # source URL. It specifies where to download from.
+ source=http://www.cbcb.umd.edu/software/jellyfish/jellyfish-1.1.11.tar.gz
+ # URL. Just for information.
+ url=http://www.cbcb.umd.edu/software/jellyfish/
+ # download the package
+ download
+ # extract files
+ extract
+ # configure
+ configure
+ # make
+ make
+ # make install
+ makeinstall
+ 

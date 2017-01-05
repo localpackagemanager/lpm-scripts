@@ -1,0 +1,29 @@
+#
+# lpm file for gmap
+# This program is used by genome guided assembly with Trinity
+# 
+# source URL. It specifies where to download from.
+source=http://research-pub.gene.com/gmap/src/gmap-gsnap-2013-07-20.tar.gz
+
+# URL. Just for information.
+url=http://research-pub.gene.com/gmap/
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=gmap
+ver=2013-07-20
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

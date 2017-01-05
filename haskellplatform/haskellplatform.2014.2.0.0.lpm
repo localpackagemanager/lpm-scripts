@@ -1,0 +1,53 @@
+#
+# Description: Haskell Platform
+# Tested: CentOS 6.4
+# Depends: ghc-7.8.3
+# updatecheckurl=https://www.haskell.org/platform/prior.html
+
+# source URL. It specifies where to download from.
+
+# Source install path.
+source=https://www.haskell.org/platform/download/2014.2.0.0/haskell-platform-2014.2.0.0-srcdist.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=haskell-platform
+ver=2014.2.0.0
+
+# URL. Just for information.
+url=http://www.haskell.org/platform/
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+if [ -e $ARCHIVE_DIR/ghc-7.8.3-x86_64-unknown-linux-centos65.tar.bz2 ] ; then
+    echo The archive file of ghc-7.8.3 was found.
+else
+    echo The archive file of ghc-7.8.3 was not found. Did you install ghc-7.8.3?
+    echo $ARCHIVE_DIR/ghc-7.8.3-x86_64-unknown-linux-centos65.tar.bz2 is expected to exist.
+    echo Try 'lpm install ghc' first, if you do not know what this means.
+    exit 1
+fi
+
+EOC
+
+# make
+shell
+./platform.sh
+./hptool/dist/build/hptool/hptool --prefix=$OPT_DIR -j 2 $ARCHIVE_DIR/ghc-7.8.3-x86_64-unknown-linux-centos65.tar.bz2 build-all
+EOC
+
+# make install
+custominstall
+tar xvfz build/product/haskell-platform-2014.2.0.0-unknown-posix-x86_64.tar.gz -C /
+ed $OPT_DIR/ghc-7.8.3-x86_64/bin/activate-hs << EOF
+/id -u
++5
+s/exit/# exit/
+wq
+EOF
+$OPT_DIR/ghc-7.8.3-x86_64/bin/activate-hs -p $LOCAL_DIR
+EOC

@@ -1,0 +1,29 @@
+#
+# Description: GNU parallel
+# Tested: CentOS 6.4
+# updatecheckurl=http://ftp.gnu.org/gnu/parallel/
+
+# source URL. It specifies where to download from.
+source=http://ftp.gnu.org/gnu/parallel/parallel-20140322.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.gnu.org/software/parallel/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

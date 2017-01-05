@@ -1,0 +1,35 @@
+
+#
+# Description: CABOG  is scientific software for biological research.
+# Tested: SL6.1
+# updatecheckurl=http://wgs-assembler.sourceforge.net/wiki/index.php?title=Main_Page
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-7.0/wgs-7.0.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://seqanswers.com/wiki/CABOG
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+custominstall
+cd kmer
+gmake install
+cd ../src
+gmake
+EOC
+
+# make install
+# makeinstall

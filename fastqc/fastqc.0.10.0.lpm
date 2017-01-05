@@ -1,0 +1,37 @@
+
+#
+# Description: FastQC
+# Tested: SL6.1
+# updatecheckurl=http://www.bioinformatics.bbsrc.ac.uk/projects/fastqc/
+# source URL. It specifies where to download from.
+source=http://www.bioinformatics.bbsrc.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=FastQC
+ver=0.10.0
+
+# URL. Just for information.
+url=http://www.bioinformatics.bbsrc.ac.uk/projects/fastqc/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# nothing to do... it's Java application.
+
+# make install
+custominstall
+cd FastQC
+chmod 755 fastqc
+cd ..
+cp -r FastQC $LIB_DIR/
+rm $BIN_DIR/fastqc
+ln -s $LIB_DIR/FastQC/fastqc $BIN_DIR/fastqc
+EOC
+

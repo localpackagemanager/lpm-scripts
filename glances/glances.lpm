@@ -1,0 +1,15 @@
+#
+# Description: a system monitoring tool (works on curses)
+# Depends: python
+# updatecheckurl=https://github.com/nicolargo/glances/tags
+
+source=git,https://github.com/nicolargo/glances.git
+
+# URL. Just for information.
+url=https://github.com/nicolargo/glances
+
+download
+custominstall
+python setup.py install --prefix=$LOCAL_DIR
+EOC
+

@@ -1,0 +1,19 @@
+# Fastest Fourier Transform in the West
+
+source=http://www.fftw.org/fftw-3.3.3.tar.gz
+url=http://www.fftw.org/
+
+download
+extract
+
+# enable sse2, avx
+# non-x86 users should modify below
+configure --enable-sse2 --enable-avx --enable-openmp
+make
+makeinstall
+
+# single version
+# non-x86 users should modify below
+configure --enable-sse2 --enable-avx --enable-single --enable-openmp
+make
+makeinstall

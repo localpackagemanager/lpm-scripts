@@ -1,0 +1,29 @@
+#
+# Description: dictd
+# Tested: SL6.1
+# updatecheckurl=https://sourceforge.net/projects/dict/files/dictd/
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/dict/dictd/dictd-1.11.2/dictd-1.11.2.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdict%2Ffiles%2Fdictd%2Fdictd-1.11.2%2F&ts=1291794927&use_mirror=voxel
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=dictd
+ver=1.11.2
+
+# URL. Just for information.
+url=http://www.dict.org/announce.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

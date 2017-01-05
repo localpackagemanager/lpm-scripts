@@ -1,0 +1,36 @@
+#
+# Description: BLAT
+# Tested: SL6.1
+# updatecheckurl=https://users.soe.ucsc.edu/~kent/src/
+
+# source URL. It specifies where to download from.
+source=http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/blat/blat
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=blat
+ver=3.5
+
+# URL. Just for information.
+url=http://www.kentinformatics.com/
+#url=http://hgwdev.cse.ucsc.edu/~kent/src/
+
+# download the package
+download
+
+# extract files
+# extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+chmod 755 $ARCHIVE_FILE
+cp $ARCHIVE_FILE $BIN_DIR/
+echo BLAT is freely available for academic, nonprofit and personal use.
+echo For commercial licensing, see http://www.kentinformatics.com/
+EOC
+

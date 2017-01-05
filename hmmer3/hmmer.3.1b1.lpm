@@ -1,0 +1,29 @@
+#
+# lpm file for HMMER3
+# Description: HMMER - biosequence analysis using profile hidden Markov models
+# updatecheckurl=http://hmmer.org/
+# source URL. It specifies where to download from.
+source=http://selab.janelia.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=hmmer
+ver=3.1b1
+
+# URL. Just for information.
+url=http://hmmer.janelia.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+configure
+
+make
+
+shell
+make check
+EOC
+
+makeinstall

@@ -1,0 +1,35 @@
+
+#
+# Description: Dindel is a program for calling small indels from short-read sequence data
+# Tested: SL6.1
+# updatecheckurl=https://sites.google.com/site/keesalbers/soft/dindel/
+
+# source URL. It specifies where to download from.
+if{$btype eq 'x86_64'} source=ftp://ftp.sanger.ac.uk/pub4/resources/software/dindel/binaries/dindel-1.01-linux.tar.gz
+if($btype eq 'darwin'} source=ftp://ftp.sanger.ac.uk/pub4/resources/software/dindel/binaries/dindel-1.01-mac-os-x.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=dindel
+ver=1.01
+
+# URL. Just for information.
+url=https://sites.google.com/site/keesalbers/soft/dindel/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make
+
+# make install
+# makeinstall
+custominstall
+cp dindel_x86-64  $BIN_DIR
+EOC
+

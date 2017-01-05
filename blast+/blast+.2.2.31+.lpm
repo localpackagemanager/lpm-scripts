@@ -1,0 +1,33 @@
+
+# Description: NCBI BLAST+
+# Tested: CentOS 6.4
+# updatecheckurl=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.31+-x64-linux.tar.gz
+if{$osname eq 'linux' && $btype eq 'x86'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.31+-ia32-linux.tar.gz
+if{$osname eq 'darwin'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.31+-universal-macosx.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=ncbi-blast
+ver=2.2.31+
+
+# URL. Just for information.
+url=http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+cp -p bin/* $BIN_DIR/
+EOC

@@ -1,0 +1,47 @@
+
+#
+# Description: Burrows-Wheeler Aligner (BWA) Recommended stable version for sampe.
+# Tested: CentOS6.4
+# updatecheckurl=https://sourceforge.net/projects/bio-bwa/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/bio-bwa/files/bwa-0.6.2.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+ver=0.6.2
+
+# URL. Just for information.
+url=http://bio-bwa.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+make
+
+# make install
+# makeinstall
+custominstall
+
+cp bwa $BIN_DIR/
+cp *.pl $BIN_DIR/
+
+echo '******************************************************************'
+echo 'If you wish to use bwa-mem, please uninstall bwa package and'
+echo 'install bwa-mem instead. bwa and bwa-mem packages conflict with'
+echo 'each other, so they cannot be installed simulataneously.'
+echo '    $ lpm uninstall bwa'
+echo '    $ lpm install bwa-mem'
+echo 'The reason why bwa package does not contain bwa-mem is that'
+echo 'The author of bwa said that ver 0.6.2 works more stably when you'
+echo 'use bwa sampe, which is one of the most frequently used command.'
+echo '******************************************************************'
+
+EOC

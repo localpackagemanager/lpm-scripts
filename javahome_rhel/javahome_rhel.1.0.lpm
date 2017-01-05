@@ -1,0 +1,40 @@
+#
+# Description: Set up JAVA_HOME for RedHat Enterprise Linux (or equivalents)
+# Tested: RHEL6.4
+# Depends: java-1.x.0-openjdk-devel
+
+# source URL. It specifies where to download from.
+# source=
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=javahome_rhel
+ver=1.0
+
+# URL. Just for information.
+#
+
+# download the package
+
+# extract files
+
+# configure
+
+# make
+
+# make install
+loadstartup
+setini
+export JAVA_HOME=/usr/lib/jvm/open-jdk
+EOC
+savestartup
+shell
+if [ rpm -qa | grep openjdk-devel ] ; then
+    echo JAVA_HOME is set to /usr/lib/jvm/open-jdk
+else
+    echo "java-1.x.0-openjdk-devel (rpm package) is not installed on the system."
+    echo "You need to install it by root."
+    echo "Alternatively, you can install Java locally, but you cannot use this"
+    echo "package in that case."
+fi
+EOC
+

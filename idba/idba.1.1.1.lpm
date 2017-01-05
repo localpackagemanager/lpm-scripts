@@ -1,0 +1,30 @@
+
+#
+# Description: Iterative De Bruijn graph Assembler
+# Tested: CentOS 6.4
+# updatecheckurl=http://i.cs.hku.hk/~alse/hkubrg/projects/idba/
+
+# source URL. It specifies where to download from.
+source=http://hku-idba.googlecode.com/files/idba-1.1.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://i.cs.hku.hk/~alse/idba
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

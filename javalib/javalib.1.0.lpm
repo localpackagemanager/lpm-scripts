@@ -1,0 +1,40 @@
+#
+# Description: Set up CLASSPATH for Java libraries
+# Tested: SL6.1
+
+# source URL. It specifies where to download from.
+# source=
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=javalib_dir
+ver=1.0
+
+# URL. Just for information.
+#
+
+# download the package
+# download
+
+# extract files
+# extract
+
+# configure
+# configure
+
+# make
+# make -j 4
+
+# make install
+loadstartup
+setini
+export CLASSPATH=$LPM_LIB/java:$CLASSPATH
+EOC
+savestartup
+
+custominstall
+
+mkdir $LIB_DIR/java
+touch $LIB_DIR/.lpm_save_under_this_dir
+
+EOC
+

@@ -1,0 +1,34 @@
+
+#
+# Description: CMake the cross-platform, open-source build system.
+# Tested: SL6.1
+# updatecheckurl=https://cmake.org/files/
+
+# source URL. It specifies where to download from.
+source=http://www.cmake.org/files/v2.8/cmake-2.8.12.2.tar.gz
+#
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name= automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.cmake.org/files/
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+./bootstrap
+EOC
+
+# configure
+configure
+
+# make
+make
+
+# make install
+make install

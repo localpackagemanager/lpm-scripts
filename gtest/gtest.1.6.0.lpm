@@ -1,0 +1,43 @@
+#
+# Description: Google Test
+# updatecheckurl=https://github.com/google/googletest/tags
+
+# source URL. It specifies where to download from.
+source=http://googletest.googlecode.com/files/gtest-1.6.0.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://code.google.com/p/googletest/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+cd gtest-$PACKAGE_VER
+./configure --prefix=$LOCAL_DIR
+make $LPM_MAKE_OPTION
+
+GTEST_DIR=$PWD
+g++ -I${GTEST_DIR}/include -I${GTEST_DIR} -c ${GTEST_DIR}/src/gtest-all.cc
+ar -rv libgtest.a gtest-all.o
+
+EOC
+
+# make
+# make
+
+# make install
+custominstall
+cd gtest-$PACKAGE_VER
+
+cp -r include/* $INCLUDE_DIR/
+cp libgtest.a $LIB_DIR/
+
+EOC

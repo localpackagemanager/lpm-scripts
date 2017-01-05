@@ -1,0 +1,42 @@
+
+#
+# Description: Exonerate
+# Tested: CentOS 6.4
+#
+# <note>
+# not completed for x86 architecture
+# </note>
+
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://www.ebi.ac.uk/~guy/exonerate/exonerate-2.2.0-x86_64.tar.gz
+if{$osname eq 'linux' && $btype eq 'x86'} source=http://www.ebi.ac.uk/~guy/exonerate/exonerate-2.2.0-i386.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=exonerate
+ver=2.2.0
+
+# URL. Just for information.
+url=http://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+if [ $ARCH = x86_64 ];then
+  rsync -av exonerate-2.2.0-x86_64/ $LOCAL_DIR/
+elif [ $ARCH = x86 ];then
+  rsync -av exonerate-2.2.0-i386/ $LOCAL_DIR/
+fi
+EOC
+

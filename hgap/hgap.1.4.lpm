@@ -1,0 +1,35 @@
+#
+# Description: HGAP: Hierarchical Genome Assembly Process
+# Tested: SL6.3
+#
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/PacificBiosciences/HGAP-Script.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=HGAP
+ver=1.4
+
+# URL. Just for information.
+url=https://github.com/PacificBiosciences/HGAP-Script
+
+# download the package
+download
+
+# extract files
+# copyrep
+
+# configure
+# do nothing
+
+# make
+# do nothing
+
+# make install
+custominstall
+cp hgap14.sh $BIN_DIR/
+mkdir -p $OPT_DIR/1.4/
+cp *.sh *.xml *.spec *.md $OPT_DIR/1.4/
+cd $OPT_DIR/
+ln -fs 1.4 current
+EOC

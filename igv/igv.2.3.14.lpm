@@ -1,0 +1,31 @@
+#
+# Description: Integrative Genomics Viewer
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.broadinstitute.org/software/igv/ReleaseNotes
+
+# source URL. It specifies where to download from.
+source=IGV_2.3.14.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=IGV
+ver=2.3.14
+
+# URL. Just for information.
+url=http://www.broadinstitute.org/igv/
+
+# download the package
+manualdownload
+
+# extract files
+extract
+
+# make install
+custominstall
+mkdir $OPT_DIR/IGV
+mv IGV_${PACKAGE_VER} $OPT_DIR/IGV/
+cd $OPT_DIR/IGV
+ln -fs IGV_${PACKAGE_VER} current
+cd $BIN_DIR
+ln -fs $OPT_DIR/IGV/current/igv.sh igv
+EOC
+

@@ -1,0 +1,20 @@
+# Description: Centroidfold
+# updatecheckurl=https://github.com/satoken/centroid-rna-package/tags
+# source URL. It specifies where to download from.
+source=http://www.ncrna.org/software/centroidfold/download/centroid_fold-0.0.10.tar.gz
+#source=hg,https://code.google.com/p/centroid-rna-package/
+
+# URL. Just for information.
+url=https://github.com/satoken/centroid-rna-package
+#url=https://code.google.com/p/centroid-rna-package/
+
+# download the package
+download
+# extract files
+extract
+# configure
+configure
+# make
+make
+# make install
+makeinstall

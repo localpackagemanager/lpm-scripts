@@ -1,0 +1,31 @@
+
+
+#
+# Description: Cufflinks Transcript assembly, differential expression, and differential regulation for RNA-Seq
+# Tested: SL6.1
+# updatecheckurl=http://cole-trapnell-lab.github.io/cufflinks/
+
+# source URL. It specifies where to download from.
+source=http://cufflinks.cbcb.umd.edu/downloads/cufflinks-2.2.1.Linux_x86_64.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://cufflinks.cbcb.umd.edu/
+
+# download the package
+download
+
+# extract files
+extract
+
+custominstall
+cd cufflinks*/
+if [ ! -d $BIN_DIR/cufflinks ]
+then
+   mkdir $BIN_DIR/cufflinks
+fi
+cp * $BIN_DIR/cufflinks/
+EOC

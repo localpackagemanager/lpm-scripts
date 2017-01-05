@@ -1,0 +1,39 @@
+#
+# Description: HDF5 Hierarchical Data Format
+# Tested: CentOS 6.6,RHEL6.1
+# updatecheckurl=http://www.hdfgroup.org/HDF5/release/obtain5.html
+# version updated to 1.8.15 (2015/06/01)
+
+# source URL. It specifies where to download from.
+source=http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.15-patch1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+ver=1.8.15-patch1
+
+# URL. Just for information.
+url=http://www.hdfgroup.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure --enable-cxx --enable-fortran
+configure --enable-cxx
+
+# make
+make
+
+# make install
+makeinstall
+
+loadstartup
+setini
+export HDF5_INCLUDE=$LPM_INCLUDE
+export HDF5_LIB=$LPM_LIB
+EOC
+savestartup
+

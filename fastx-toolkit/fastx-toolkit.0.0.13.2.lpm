@@ -1,0 +1,39 @@
+#
+# Description: fastx-toolkit
+# Tested: SL6.1
+# Depends: libgtextutils
+# updatecheckurl=http://hannonlab.cshl.edu/fastx_toolkit/
+
+# <note>
+#  It may require libgtextutils.
+# </note>
+
+# source URL. It specifies where to download from.
+source=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit-0.0.13.2.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=fastx_toolkit
+ver=0.0.13.2
+
+# URL. Just for information.
+url=http://hannonlab.cshl.edu/fastx_toolkit/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+export GTEXTUTILS_LIBS="-L$LIB_DIR -lgtextutils"
+export GTEXTUTILS_CFLAGS=-I$INCLUDE_DIR/gtextutils
+./configure  --prefix=$LOCAL_DIR
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+

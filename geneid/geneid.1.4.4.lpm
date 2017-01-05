@@ -1,0 +1,34 @@
+#
+# lpm file for geneid
+# this script was written by T. Nishiyama
+#
+# Description: geneid: a program to predict genes in genomic sequences
+# Tested: RedHat 6.1
+# updatecheckurl=http://genome.crg.es/software/geneid/index.html#code
+
+
+# source URL. It specifies where to download from.
+source=ftp://genome.crg.es/pub/software/geneid/geneid_v1.4.4.Jan_13_2011.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=geneid
+ver=1.4.4
+
+# URL. Just for information.
+url=http://genome.crg.es/software/geneid/
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+cd geneid
+make $LPM_MAKE_OPTION
+EOC
+
+custominstall
+cd geneid
+install bin/geneid $BIN_DIR
+EOC

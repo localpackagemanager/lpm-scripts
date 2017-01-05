@@ -1,0 +1,46 @@
+#
+# lpm file for virc
+#
+
+# source URL. It specifies where to download from.
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=envs
+ver=1.1
+
+# URL. Just for information.
+
+# download the package
+
+# extract files
+
+# configure
+
+# make
+
+# set scripts
+loadstartup
+setini
+export EDITOR=vi
+export SVN_EDITOR=vi
+export LESS=--tabs=4
+export LDFLAGS="-L${LPM_LIB}"
+export CFLAGS="-I${LPM_INCLUDE}"
+export CCFLAGS="-I${LPM_INCLUDE}"
+
+function cnode() {
+        ssh -t $1 "$SHELL -c 'cd $PWD; env CNODE_STACK=\"$HOST $CNODE_STACK\" $SHELL'"
+}
+
+function cstack() {
+        echo $CNODE_STACK
+}
+
+if [ "$SHELL" = "/bin/zsh" ]; then
+	setopt extended_glob
+fi
+
+EOC
+savestartup
+
+# make install

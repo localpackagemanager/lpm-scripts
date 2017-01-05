@@ -1,0 +1,37 @@
+#
+# Description: Burrows-Wheeler Aligner (BWA) Latest version with bwa-mem (still unstable?).
+# Tested: CentOS 6.4
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/bio-bwa/files/bwa-0.7.10.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=bwa-mem
+ver=0.7.10
+topdirname=bwa-0.7.10
+
+# URL. Just for information.
+url=http://seqanswers.com/forums/showthread.php?t=31731
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+make
+
+# make install
+# makeinstall
+custominstall
+
+cp bwa $BIN_DIR/
+cp *.pl $BIN_DIR/
+
+EOC
+
+

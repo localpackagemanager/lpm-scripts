@@ -1,0 +1,44 @@
+#
+# Description: CEGMA - Core Eukaryotic Genes Mapping Approach
+# Tested: RHEL6.1
+# lpm file for CEGMA
+
+# source URL. It specifies where to download from.
+source=http://korflab.ucdavis.edu/datasets/cegma/cegma_v2.4.010312.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=cegma
+ver=v2.4.010312
+
+# URL. Just for information.
+url=http://korflab.ucdavis.edu/datasets/cegma/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+shell
+cd cegma_v2.4.010312
+make
+EOC
+
+custominstall
+
+mkdir -p $OPT_DIR/cegma
+rsync -av --exclude=".*" cegma_$PACKAGE_VER $OPT_DIR/cegma
+cd $OPT_DIR/cegma
+ln -fs cegma_$PACKAGE_VER current
+EOC
+
+loadstartup
+setini
+export CEGMA="$LPM_OPT/cegma/current"
+#export CEGMATMP="path"
+export PERL5LIB="$PERL5LIB:$CEGMA/lib"
+export PATH="$CEGMA/bin:$PATH"
+
+EOC
+savestartup

@@ -1,0 +1,39 @@
+#
+# Description: bowtie2
+# Tested: CentOS 6.6
+# updatecheckurl=http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+
+# source URL. It specifies where to download from.
+# Use this URL for 64bit (Intel/AMD x86_64)
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.5/bowtie2-2.2.5-linux-x86_64.zip
+# Use this URL for 32bit (Intel/AMD x86)
+if{$osname eq 'linux' && $btype eq 'x86'} source=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.5/bowtie2-2.2.5-linux-i386.zip
+# Use this URL for MacOS X (Intel x86_64)
+if{$osname eq 'darwin'} source=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.5/bowtie2-2.2.5-macos-x86_64.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=bowtie2
+ver=2.2.5
+
+# URL. Just for information.
+url=http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+custominstall
+
+cd bowtie2-*
+cp bowtie2 bowtie2-build* bowtie2-inspect* bowtie2-align* $BIN_DIR/
+
+EOC
+

@@ -1,0 +1,31 @@
+
+#
+# Description: GMP (The GNU Multiple Precision Arithmetic Library)
+# Tested: CentOS 6.4
+# updatecheckurl=https://gmplib.org/#STATUS
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.gnu.org/gnu/gmp/gmp-5.1.2.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://gmplib.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+
