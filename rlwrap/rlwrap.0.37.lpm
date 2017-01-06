@@ -1,0 +1,12 @@
+# Description: rlwrap is a wrapper that uses the GNU readline library to allow the editing of keyboard input for any other command.
+# Depends: readline
+# Tested: CentOS6.4
+# updatecheckurl=http://utopia.knoware.nl/~hlub/uck/rlwrap/#rlwrap
+source=http://utopia.knoware.nl/~hlub/uck/rlwrap/rlwrap-0.37.tar.gz
+url=http://utopia.knoware.nl/~hlub/uck/rlwrap/#rlwrap
+download
+extract
+configure
+make
+makeinstall
+

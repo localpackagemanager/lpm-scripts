@@ -1,0 +1,35 @@
+
+#
+# Description: Oases is a de novo transcriptome assembler designed to 
+#              produce transcripts from short read sequencing technologies, 
+#              such as Illumina, SOLiD, or 454 in the absence of any genomic assembly.
+# Tested: SL6.1
+# updatecheckurl=https://github.com/dzerbino/oases/releases
+
+# source URL. It specifies where to download from.
+source=http://www.ebi.ac.uk/~zerbino/oases/oases_0.2.08.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+ver=0.2.08
+
+# URL. Just for information.
+url=http://www.ebi.ac.uk/~zerbino/oases/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+#make
+
+# make install
+custominstall
+cd oases*/
+make 'VELVET_DIR=/home/hatake/lcl/build/velvet-1.2.08/velvet'
+EOC

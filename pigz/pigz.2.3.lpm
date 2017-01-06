@@ -1,0 +1,37 @@
+
+#
+# Description: pigz
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.zlib.net/pigz/
+
+# source URL. It specifies where to download from.
+source=http://www.zlib.net/pigz/pigz-2.3.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://www.zlib.net/pigz/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+make
+
+# make install
+# makeinstall
+custominstall
+cp pigz $BIN_DIR/
+cp unpigz $BIN_DIR/
+cp pigz.1 $MAN_DIR/man1
+
+EOC
+

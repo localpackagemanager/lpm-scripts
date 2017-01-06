@@ -1,0 +1,35 @@
+#
+# Description: SOAPdenovo2 (up to 127mer)
+# Tested: CentOS 6.4
+# updatecheckurl=https://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r240/SOAPdenovo2-src-r240.tgz/download
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=SOAPdenovo2
+ver=240
+
+# URL. Just for information.
+url=http://soap.genomics.org.cn/soapdenovo.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd SOAPdenovo2-src-r${PACKAGE_VER}
+make
+EOC
+
+# make install
+custominstall
+cd SOAPdenovo2-src-r${PACKAGE_VER}
+cp SOAPdenovo-*	$BIN_DIR/
+EOC

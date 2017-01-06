@@ -1,0 +1,34 @@
+#
+# Description: RMBlast - A modified version of NCBI Blast for use with RepeatMasker and RepeatModeler
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.repeatmasker.org/RMBlast.html
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/rmblast/LATEST/ncbi-rmblastn-2.2.28-x64-linux.tar.gz
+if{$osname eq 'linux' && $btype eq 'x86'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/rmblast/LATEST/ncbi-rmblastn-2.2.28-ia32-linux.tar.gz
+if{$osname eq 'darwin'} source=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/rmblast/LATEST/ncbi-rmblastn-2.2.28-universal-macosx.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=ncbi-rmblastn
+ver=2.2.28
+
+# URL. Just for information.
+url=http://www.repeatmasker.org/RMBlast.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+cp bin/* $BIN_DIR/
+EOC
+

@@ -1,0 +1,30 @@
+#
+# Description: Sensitive sequence aligner (commercial; Linux 2.6; x86_64)
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.novocraft.com/support/download/
+
+# source URL. It specifies where to download from.
+source=novocraftV3.02.02.Linux2.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=novoalign
+ver=3.02.02
+
+# URL. Just for information.
+url=http://www.novocraft.com/products/novoalign/
+
+# download the package
+manualdownload
+
+
+# extract files
+extract
+
+# make install
+custominstall
+cd novocraft
+cp isnovoindex novo* $BIN_DIR/
+echo "NOTE: We did not install R scripts. See $PWD if you need them."
+echo "      If you do not figure out what 'R' is, then most probably you do not need them."
+EOC
+

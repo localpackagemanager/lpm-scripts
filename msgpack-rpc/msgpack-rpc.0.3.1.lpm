@@ -1,0 +1,30 @@
+#
+# Description: Message Pack RPC for C++
+# Depends: mpio
+# updatecheckurl=https://github.com/msgpack/msgpack
+
+# source URL. It specifies where to download from.
+source=http://msgpack.org/releases/cpp/msgpack-rpc-0.3.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://msgpack.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

@@ -1,0 +1,30 @@
+
+#
+# Description: sparsehash An extremely memory-efficient hash_map implementation
+# Tested: SL6.1
+# updatecheckurl=https://github.com/sparsehash/sparsehash/tags
+
+# source URL. It specifies where to download from.
+source=http://sparsehash.googlecode.com/files/sparsehash-2.0.2.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://sparsehash.googlecode.com/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

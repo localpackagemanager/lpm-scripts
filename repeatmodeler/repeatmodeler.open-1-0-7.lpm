@@ -1,0 +1,38 @@
+#
+# lpm file for RepeatModeler
+# updatecheckurl=http://www.repeatmasker.org/RepeatModeler.html
+# Description: RepeatModeler to prepare species specific database for RepeatMasker
+# Tested: RHEL6.4
+# Depends: RepeatMasker & Libraries, RECON, RepeatScout, TRF, rmblast
+# <note>
+# configure needed after install
+# </note>
+
+
+# this script was written by T. Nishiyama
+
+
+# source URL. It specifies where to download from.
+source=http://www.repeatmasker.org/RepeatModeler-open-1-0-7.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=RepeatModeler
+ver=open-1-0-7
+
+# URL. Just for information.
+url=http://www.repeatmasker.org/RepeatModeler.html
+
+# download the package
+download
+
+# extract files
+extract
+
+custominstall
+
+mkdir -p $OPT_DIR/RepeatModeler/RepeatModler-${PACKAGE_VER}
+rsync -av RepeatModeler $OPT_DIR/RepeatModeler/RepeatModler-${PACKAGE_VER}
+cd $OPT_DIR/RepeatModeler
+ln -sf RepeatModler-${PACKAGE_VER} current
+EOC
+

@@ -1,0 +1,45 @@
+
+#
+# Description: python setuptools
+# Depends: python
+# updatecheckurl=https://pythonhosted.org/setuptools/history.html
+
+# source URL. It specifies where to download from.
+source=http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=python-setuptools
+ver=0.6c11
+
+# URL. Just for information.
+url=http://pypi.python.org/pypi/setuptools
+
+# download the package
+download
+
+# extract files
+# extract
+
+# configure
+# configure
+
+# make
+# make
+
+# make install
+custominstall
+echo "This package is for Python 2.x. If you do use Python 3.x, please try python3-setuptools."
+sh $ARCHIVE_DIR/setuptools-0.6c11-py2.7.egg --prefix=$LOCAL_DIR
+echo "You might want to use the latest version of setuptools. If you do so,"
+echo "please type 'easy_install -U setuptools'."
+echo "If you want to use 'distribute' instead of setuptools,"
+echo "please type 'easy_install distribute'. If you have a plan to install scipy,"
+echo "distribute fits you."
+echo "You might want to install pip as well."
+echo "If you are new to Python and are curious about the relationship between"
+echo "setuptools, distribute, and pip, the following thread might help:"
+echo "    http://stackoverflow.com/questions/8550062/how-do-distribute-and-pip-relate-to-one-another"
+EOC
+
+
+

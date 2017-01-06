@@ -1,0 +1,27 @@
+#
+# Description: Stacks: Genetic map builder for RAD sequencing
+# Tested: CentOS 6.4
+# updatecheckurl=http://catchenlab.life.illinois.edu/stacks/
+
+# source URL. It specifies where to download from.
+source=http://catchenlab.life.illinois.edu/stacks/source/stacks-1.35.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://catchenlab.life.illinois.edu/stacks/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+make
+
+makeinstall

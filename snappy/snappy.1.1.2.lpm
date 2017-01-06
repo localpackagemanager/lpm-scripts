@@ -1,0 +1,30 @@
+#
+# Description:  Snappy (a fast compressor/decompressor)
+# updatecheckurl=https://github.com/google/snappy/tags
+
+# source URL. It specifies where to download from.
+# source=git,https://github.com/google/snappy.git
+source=https://snappy.googlecode.com/files/snappy-1.1.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=snappy
+# ver=1.1.2
+
+# URL. Just for information.
+url=https://github.com/google/snappy
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

@@ -1,0 +1,32 @@
+#
+# Description: Ruby (1.9.x)
+#
+
+# source URL. It specifies where to download from.
+source=http://cache.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p545.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://www.ruby-lang.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+
+custominstall
+$BIN_DIR/ruby -e '$:.each { |x| `touch #{x}/.lpm_save_under_this_dir` }'
+EOC

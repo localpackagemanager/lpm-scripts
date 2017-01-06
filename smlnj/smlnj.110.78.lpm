@@ -1,0 +1,29 @@
+# Description: Standard ML of New Jersey (abbreviated SML/NJ) is a compiler
+# for the Standard ML '97 programming language with associated libraries,
+# tools, and documentation. SML/NJ is free, open source software. 
+# Depends:
+# Tested: CentOS6.5
+# updatecheckurl=http://www.smlnj.org/dist/working/index.html
+source=http://smlnj.cs.uchicago.edu/dist/working/110.78/config.tgz
+name=smlnj
+ver=110.78
+topdirname=smlnj-110.78
+url=http://www.smlnj.org/
+download
+extract
+# config
+shell
+sed -i -e 's|#request \+heap2asm.*|request heap2asm|'       config/targets
+sed -i -e 's|#request \+pgraph-util.*|request pgraph-util|' config/targets
+EOC
+# make
+custominstall
+config/install.sh
+cp -r bin/*             $BIN_DIR/
+cp -r bin/.heap         $BIN_DIR/
+cp -r bin/.run          $BIN_DIR/
+cp    bin/.arch-n-opsys $BIN_DIR/
+cp    bin/.run-sml      $BIN_DIR/
+cp    bin/.link-sml     $BIN_DIR/
+EOC
+

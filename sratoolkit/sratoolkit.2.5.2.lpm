@@ -1,0 +1,51 @@
+#
+# lpm file for SRA Toolkit
+# Description: SRAToolkit (for CentOS & Mac)
+# Tested: CentOS 6.6
+# updatecheckurl=http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
+# update to latest version on 21 July, 2015
+
+# source URL. It specifies where to download from.
+if{$osname eq 'darwin'} source=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.2/sratoolkit.2.5.2-mac64.tar.gz
+if{$osname eq 'linux' && $dist_info->{type} eq 'rhel'} source=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.2/sratoolkit.2.5.2-centos_linux64.tar.gz
+if{$osname eq 'linux' && $dist_info->{type} eq 'ubuntu'} source=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.2/sratoolkit.2.5.2-ubuntu64.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=SRAToolkit
+ver=2.5.2
+
+# URL. Just for information.
+url=http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=show&f=software&m=software&s=software
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+if [ x$OS = "xdarwin" ] ; then
+    cd sratoolkit.${PACKAGE_VER}-mac64
+else
+    if [ x$DIST_TYPE = "xrhel" ] ; then
+        cd sratoolkit.${PACKAGE_VER}-centos_linux64
+    else
+        if [ x$DIST_TYPE = "xubuntu" ] ; then
+            cd sratoolkit.${PACKAGE_VER}-ubuntu_linux64
+        else
+            echo "This type of Linux distribution is not supported."
+            echo "   DIST_DESC: $DIST_DESC"
+            echo "   DIST_TYPE: $DIST_TYPE"
+        fi
+    fi
+fi
+cp -a bin/*	$BIN_DIR/
+EOC
+

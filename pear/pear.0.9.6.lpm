@@ -1,0 +1,36 @@
+#
+# Description: PEAR: Paired-end read merger
+# Tested: CentOS6.6
+# updatecheckurl=http://www.exelixis-lab.org/web/software/pear
+# <note> requires zlib >= 1.2.4 > CentOS6.6 distributed version </note>
+
+# source URL. It specifies where to download from.
+source=http://sco.h-its.org/exelixis/web/software/pear/files/pear-0.9.6-src.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=pear
+ver=0.9.6
+
+# URL. Just for information.
+url=http://www.exelixis-lab.org/web/software/pear
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+shell
+cd pear-0.9.6-src
+./configure --prefix=$LOCAL_DIR
+make LDFLAGS="-L $LIB_DIR"
+EOC
+
+custominstall
+cd pear-0.9.6-src
+make install
+EOC

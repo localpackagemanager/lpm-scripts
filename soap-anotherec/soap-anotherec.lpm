@@ -1,0 +1,35 @@
+
+#
+# Description: SOAP ErrorCorrection: Another read correction package
+# Tested: CentOS 6.4
+#
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/soapdenovo2/ErrorCorrection/ErrorCorrection.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=SOAPec-another
+ver=unknown
+
+# URL. Just for information.
+url=http://soap.genomics.org.cn/soapdenovo.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+#make
+
+# make install
+#makeinstall
+custominstall
+cd nas1/rbluo/temp/ecProj/src
+cp ErrorCorrection $BIN_DIR/
+EOC
+

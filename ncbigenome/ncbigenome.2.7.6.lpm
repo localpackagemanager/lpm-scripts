@@ -1,0 +1,39 @@
+#
+# Description: NCBI Genome Workbench
+# updatecheckurl=http://www.ncbi.nlm.nih.gov/tools/gbench/releasenotes/
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.ncbi.nlm.nih.gov/toolbox/gbench/ver-2.7.6/gbench-src-2.7.6.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=gbench-linux
+ver=2.7.6
+
+# URL. Just for information.
+url=http://www.ncbi.nlm.nih.gov/tools/gbench/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd gbench-${PACKAGE_VER}
+./configure --prefix=$LOCAL_DIR
+env TOUCH=/bin/touch make
+
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd gbench-${PACKAGE_VER}
+make install
+
+EOC
+

@@ -1,0 +1,36 @@
+#
+# Description: MUMmer (alignment program using Suffix Tree)
+# Tested: CentOS6.4
+# updatecheckurl=https://sourceforge.net/projects/mummer/files/mummer/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=mummer
+ver=3.23
+
+# URL. Just for information.
+url=http://mummer.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd MUMmer${PACKAGE_VER}/
+make $LPM_MAKE_OPT
+EOC
+
+# make install
+custominstall
+cd MUMmer${PACKAGE_VER}/
+cp annotate combineMUMs delta-filter dnadiff exact-tandems gaps mapview mgaps mummer* nucmer* promer repeat-match run-mummer* show-* $BIN_DIR/
+EOC
+

@@ -1,0 +1,26 @@
+# Description: OCaml
+# updatecheckurl=http://ocaml.org/releases/
+# The OCaml system is the main implementation of the Caml language.
+# It features a powerful module system and a full-fledged object-oriented layer.
+# It comes with a native-code compiler that supports numerous architectures, for high performance;
+# a bytecode compiler, for increased portability; and an interactive loop, for experimentation and rapid development. 
+# 
+# source URL. It specifies where to download from.
+source=http://caml.inria.fr/pub/distrib/ocaml-4.02/ocaml-4.02.2.tar.bz2
+# URL. Just for information.
+url=http://ocaml.org/
+# download | manualdownload
+# to $LOCAL_DIR/archive by default
+download
+# check md5sum
+md5 8f5e059205c461e9a8951f163a2e5923
+# extract files
+extract
+# configure
+shell
+./configure -prefix $LOCAL_DIR
+EOC
+# make
+make world.opt
+# makeinstall
+makeinstall

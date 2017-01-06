@@ -1,0 +1,19 @@
+#
+# Description: PBJelly: Gap closure tool for PacBio long reads (renamed to pbsuite)
+# updatecheckurl=https://sourceforge.net/projects/pb-jelly/files/
+
+# source URL.
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=PBJelly
+ver=14.9.9
+
+# URL. Just for information.
+url=http://sourceforge.net/projects/pb-jelly/
+
+# configure
+shell
+echo "This package 'pbjelly' is renamed to 'pbsuite'."
+exit 1
+EOC
+

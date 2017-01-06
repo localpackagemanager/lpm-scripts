@@ -1,0 +1,34 @@
+
+#
+# Description: SOAPec: Read correction package designed to correct Illumina short reads.
+# Tested: CentOS 6.4
+# updatecheckurl=https://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/soapdenovo2/files/ErrorCorrection/SOAPec_v2.01.tar.gz/download
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=SOAPec
+ver=2.01
+
+# URL. Just for information.
+url=http://soap.genomics.org.cn/soapdenovo.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+#make
+
+# make install
+#makeinstall
+custominstall
+cd SOAPec_v${PACKAGE_VER}
+cp Corrector_* KmerFreq_* $BIN_DIR/
+EOC

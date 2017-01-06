@@ -1,0 +1,46 @@
+
+#
+# Description: Online Call
+# Tested: SL6.1
+#
+
+# source URL. It specifies where to download from.
+source=http://www.cerc.utexas.edu/OnlineCall/OnlineCall.c
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+ver=0
+
+# URL. Just for information.
+url=http://www.cerc.utexas.edu/OnlineCall/
+
+# download the package
+shell
+rm -f $LPM_ARCHIVE/OnlineCall.c
+EOC
+
+download
+
+# extract files
+#extract
+
+# configure
+#configure
+
+# make
+#make
+
+# make install
+#makeinstall
+shell
+if [ ! -d $LPM_BUILD/onlinecall ]
+then
+  mkdir $LPM_BUILD/onlinecall
+
+fi
+cp $LPM_ARCHIVE/OnlineCall.c $LPM_BUILD/onlinecall/
+cd $LPM_BUILD/onlinecall/
+/usr/bin/gcc OnlineCall.c -o OnlineCall -L/usr/lib64/atlas -llapack -lcblas -latlas
+cp OnlineCall $LPM_BIN
+
+EOC

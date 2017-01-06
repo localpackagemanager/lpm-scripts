@@ -1,0 +1,39 @@
+#
+# Description: Python (2.x)
+# updatecheckurl=https://www.python.org/downloads/
+
+# source URL. It specifies where to download from.
+source=http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=python
+ver=2.7.6
+topdirname=Python-2.7.6
+
+# URL. Just for information.
+url=http://www.python.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+
+custominstall
+$BIN_DIR/python -c 'import sys,os; dirs = [p + ".lpm_save_under_this_dir" for p in sys.path if os.path.isdir(p) and not p.endswith(".egg")]; [os.system("touch " + i) for i in dirs]'
+EOC
+
+shell
+echo "You may want to install python-setuptools as well if you use setuptools."
+echo "Type 'lpm install python-setuptools' if so."
+EOC
+

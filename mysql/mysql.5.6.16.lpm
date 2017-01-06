@@ -1,0 +1,53 @@
+#
+# Description: MySQL
+# Depends: cmake
+# Tested: CentOS 6.1
+# updatecheckurl=http://dev.mysql.com/doc/
+
+# source URL. It specifies where to download from.
+source=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.16.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.mysql.com/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+cmake -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DCMAKE_INSTALL_PREFIX=$OPT_DIR/mysql
+EOC
+# configure
+
+# make
+make
+
+# make install
+makeinstall
+
+shell
+# mkdir $OPT_DIR/mysql/var
+# mkdir $OPT_DIR/mysql/var/tmp
+# mkdir $OPT_DIR/mysql/var/lock
+# mkdir $OPT_DIR/mysql/var/lock/subsys
+# perl -lpe "s|=.*|='$OPT_DIR/mysql/var/lock/subsys'| if(/^lockdir=/)" -i $OPT_DIR/mysql/support-files/mysql.server
+# perl -lpe "s|=.*|=$OPT_DIR/mysql/my.cnf| if(/conf=/)" -i $OPT_DIR/mysql/support-files/mysql.server
+# perl -lpe "s|=.*|=$OPT_DIR/mysql/var/lock/subsys| if(/^mysqld_pid_file_path=/)" -i $OPT_DIR/mysql/support-files/mysql.server
+# perl -lne "if(/server-configuration-defaults/){print; print \"[client]\\nsocket=$OPT_DIR/mysql/var/tmp/mysql.sock\\n\"}else{print}" -i $OPT_DIR/mysql/my.cnf
+# perl -lne "if(/\\[mysqld\\]/){print; print \"socket=$OPT_DIR/mysql/var/tmp/mysql.sock\\n\\n\";}else{print;}" -i $OPT_DIR/mysql/my.cnf
+echo MySQL was set up in $OPT_DIR/mysql
+echo To set up your database, please run the following to complete the initialization:
+echo "  \$ cd $OPT_DIR/mysql"
+echo "  \$ scripts/mysql_install_db --user=$USER --defaults-file=$OPT_DIR/mysql/my.cnf"
+# echo Server start-up script is located at $OPT_DIR/mysql/support-files/mysql.server
+# echo The configuration file is located at $OPT_DIR/mysql/my.cnf
+# echo You may have to specify --defaults-file=$OPT_DIR/mysql/my.cnf
+EOC
+

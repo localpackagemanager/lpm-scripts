@@ -1,0 +1,34 @@
+#
+# Description: Picard (SAM manipulation)
+# Tested: CentOS 6.6
+# updatecheckurl=https://github.com/broadinstitute/picard/tags
+
+# source URL. It specifies where to download from.
+source=https://github.com/broadinstitute/picard/releases/download/1.129/picard-tools-1.129.zip
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+ver=1.129
+
+# URL. Just for information.
+url=https://github.com/broadinstitute/picard
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# no need to make because it's written in Java
+
+# make install
+# makeinstall
+custominstall
+cp -r picard-tools-$PACKAGE_VER $LIB_DIR/
+ln -s $LIB_DIR/picard-tools-$PACKAGE_VER $LIB_DIR/picard
+
+EOC
+

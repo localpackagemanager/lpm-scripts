@@ -1,0 +1,48 @@
+#
+# Description: Analysis tool for PacBio Long Reads
+# Tested: RHEL 6.5
+# updatecheckurl=https://sourceforge.net/projects/pb-jelly/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/pb-jelly/files/PBSuite_14.9.9.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=pbsuite
+ver=14.9.9
+topdirname=PBSuite_14.9.9
+
+# URL. Just for information.
+url=http://sourceforge.net/projects/pb-jelly/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+if [ x${SEYMOUR_HOME} == "x" ] ; then
+    echo PacBio SMRT Analysis Pipeline is not available
+    echo Please type \'lpm install smrt-analysis-centos\' to install it, if you use CentOS.
+    # exit 2
+fi
+EOC
+
+# make
+
+# make install
+custominstall
+mkdir -p $OPT_DIR/pbsuite
+mv $BUILD_DIR/PBSuite_${PACKAGE_VER}/ $OPT_DIR/pbsuite
+cd $OPT_DIR/pbsuite
+ln -fs PBSuite_${PACKAGE_VER} current
+EOC
+
+loadstartup
+setini
+export SWEETPATH=$LPM_OPT/pbsuite/current
+export PYTHONPATH=$PYTHONPATH:$SWEETPATH
+export PATH=$PATH:$SWEETPATH/bin/
+EOC
+savestartup

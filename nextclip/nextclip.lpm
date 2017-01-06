@@ -1,0 +1,29 @@
+#
+# Description: NextClip: Clip and analyse Illumina Nextera Long Mate Pair reads
+# Tested: CentOS6.6
+# updatecheckurl=https://github.com/richardmleggett/nextclip/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/richardmleggett/nextclip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=nextclip
+# ver=
+
+# URL. Just for information.
+url=https://github.com/richardmleggett/nextclip
+
+# download the package
+download
+
+# extract files
+
+# configure
+
+# make
+make
+
+# make install
+custominstall
+install -m 755 bin/nextclip $BIN_DIR
+EOC

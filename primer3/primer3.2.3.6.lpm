@@ -1,0 +1,53 @@
+#
+# lpm file for jellyfish
+#
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/primer3/files/primer3/2.3.6/primer3-2.3.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+
+# URL. Just for information.
+url=http://primer3.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+shell
+cd src
+make
+EOC
+
+custominstall
+mkdir -p $SHARE_DIR/primer3
+cp -rp COPYING.txt cmp_settings.pl example \
+ primer3_manual.htm \
+ primer3_v1_1_4_default_settings.txt \
+ primer3web_v0_4_0_default_settings.txt \
+ primer3web_v3_0_0_default_settings.txt \
+ primer3web_v4_0_0_default_settings.txt \
+ test \
+ $SHARE_DIR/primer3
+
+cd src
+install -cs long_seq_tm_test ntdpal ntthal oligotm primer3_core $BIN_DIR
+cp -rp primer3_config $SHARE_DIR/primer3
+EOC
+
+loadstartup
+setini
+export PRIMER_THERMODYNAMIC_PARAMETERS_PATH=$LPM_SHARE/primer3/primer3_config
+EOC
+savestartup
+
+shell
+cd test
+make
+EOC

@@ -1,0 +1,27 @@
+#
+# Description: pysam
+# Tested: CentOS 6.4
+# updatecheckurl=https://code.google.com/archive/p/pysam/downloads
+
+# source URL. It specifies where to download from.
+source=http://pysam.googlecode.com/files/pysam-0.7.5.tar.gz
+ver=0.7.5
+
+# URL. Just for information.
+url=http://code.google.com/p/pysam/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+

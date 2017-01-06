@@ -1,0 +1,35 @@
+#
+# Description: MuSICA2
+# updatecheckurl=http://musica.gi.k.u-tokyo.ac.jp/
+
+# source URL. It specifies where to download from.
+source=http://musica.gi.k.u-tokyo.ac.jp/MuSICA-2.1.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://musica.gi.k.u-tokyo.ac.jp/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# shell
+# EOC
+
+# make install
+# makeinstall
+custominstall
+mkdir $BIN_DIR/musica2
+cp * $BIN_DIR/musica2/
+printf "export PATH=$BIN_DIR/musica2:\$PATH\nexport PERL5LIB=$BIN_DIR/musica2:\$PERL5LIB" > $BIN_DIR/musica_set_path.sh
+EOC
+

@@ -1,0 +1,38 @@
+# The line below is used as the description of the package when the script is uploaded.
+# Description: QUAST: Quality Assessment Tool for Genome Assemblies
+# updatecheckurl=https://sourceforge.net/projects/quast/files/
+# The line below shows what Linux distribution (or MacOS) you tested the package with. Shown on the web if uploaded.
+# Tested: CentOS 6.6
+#
+# Describe dependent packages. It will not be processed automatically, so you can write anything human-readable.
+# However, if we have a corresponding LPM package (in the central repository), use the package name. You can omit the line if the package does not have any dependency.
+# Depends: matplotlib
+#
+# Use note tag (in comment lines) if you have long explanation that does not fit within a single line.
+# <note>
+# matplotlib is recommended
+# </note>
+#
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/quast/quast-2.3.tar.gz
+# URL. Just for information. If you upload the script, it will be linked to this URL.
+url=http://bioinf.spbau.ru/quast
+# download the package
+download
+# extract files
+extract
+# configure
+#configure
+# make
+# make install
+#makeinstall
+custominstall
+  topdir=`basename $PWD`
+  mkdir -p $OPT_DIR/$topdir
+  rm -f $OPT_DIR/quast
+  ln -s $OPT_DIR/$topdir $OPT_DIR/quast
+  rsync -av . $OPT_DIR/$topdir
+  cd $OPT_DIR/$topdir
+  python quast.py --test
+  python metaquast.py --test
+EOC

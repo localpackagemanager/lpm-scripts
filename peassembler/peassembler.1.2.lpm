@@ -1,0 +1,51 @@
+#
+# Description: PE-Assembler
+# updatecheckurl=https://sourceforge.net/projects/peasm/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/peasm/files/pe_asm_1.2.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=peassembler
+ver=1.2
+
+# URL. Just for information.
+url=http://www.comp.nus.edu.sg/~bioinfo/peasm/PE_manual.htm
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd pe_asm_${PACKAGE_VER}/
+cd src
+./compile.sh
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd pe_asm_${PACKAGE_VER}/
+cd bin/
+mkdir -p $OPT_DIR/pe_asm/${PACKAGE_VER}
+cp *.exe	$OPT_DIR/pe_asm/${PACKAGE_VER}
+pushd $OPT_DIR/pe_asm
+ln -fs ${PACKAGE_VER} current
+popd
+EOC
+
+shell
+
+echo "=============================================="
+echo "We copied PE-assembler to $OPT_DIR/pe_asm/current"
+echo "in order to avoid potential name conflict."
+echo "=============================================="
+
+EOC
+

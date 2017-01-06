@@ -1,0 +1,30 @@
+
+#
+# Description: pkg-config
+# Tested: SL6.1
+# updatecheckurl=https://pkg-config.freedesktop.org/releases/
+
+# source URL. It specifies where to download from.
+source=http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://pkgconfig.freedesktop.org/releases/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

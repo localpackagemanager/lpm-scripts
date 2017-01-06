@@ -1,0 +1,48 @@
+#
+# Description: samtools
+# Tested: RHEL 6.1
+# updatecheckurl=https://github.com/samtools/samtools/tags
+# <note>
+# In addition to the samtools executable, libbam.a is used by other programs.
+# </note>
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/samtools/samtools/0.1.19/samtools-0.1.19.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://samtools.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+replaceregexp
+Makefile
+m|CFLAGS=|
+s|-O2|-O2 -fPIC|
+
+# make
+make
+
+# make install
+custominstall
+cp samtools $BIN_DIR/
+cp bcftools/bcftools $BIN_DIR/
+cp bcftools/vcfutils.pl $BIN_DIR/
+cp misc/*.pl $BIN_DIR/
+cp misc/md5fa misc/md5sum-lite $BIN_DIR/
+cp misc/wgsim $BIN_DIR/
+cp samtools.1 $MAN_DIR/
+mkdir -p $OPT_DIR/samtools
+rsync -av . $OPT_DIR/samtools
+EOC
+

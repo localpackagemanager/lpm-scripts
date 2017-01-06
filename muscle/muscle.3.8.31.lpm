@@ -1,0 +1,30 @@
+#
+# Description: MUSCLE: Multiple Alignment Program
+# Tested: CentOS 6.4
+# updatecheckurl=http://drive5.com/muscle/downloads.htm
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86'} source=http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux32.tar.gz
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz
+if{$osname eq 'darwin'} source=http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86darwin64.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=muscle
+ver=3.8.31
+
+# URL. Just for information.
+url=http://www.drive5.com/muscle/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+
+# make install
+custominstall
+cp muscle* $BIN_DIR/
+EOC
+

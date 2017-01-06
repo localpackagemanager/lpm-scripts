@@ -1,0 +1,38 @@
+#
+# Description: Sequencing error correction tool for long reads such as PacBio CLR
+# updatecheckurl=http://zombie.cb.k.u-tokyo.ac.jp/sprai/Download.html
+
+# source URL. It specifies where to download from.
+source=http://zombie.cb.k.u-tokyo.ac.jp/sprai/dist/sprai-0.9.9.7.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://zombie.cb.k.u-tokyo.ac.jp/sprai/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+#cd sprai-${PACKAGE_VER}
+./waf configure --prefix=$LOCAL_DIR
+EOC
+
+# make
+shell
+#cd sprai-${PACKAGE_VER}
+./waf build
+EOC
+
+# make install
+custominstall
+#cd sprai-${PACKAGE_VER}
+./waf install
+EOC
+

@@ -1,0 +1,38 @@
+
+#
+# Description: SGA  is a de novo genome assembler based on the concept of string graphs.
+# Tested: SL6.1
+# Depends: google-sparsehash bamtools
+# updatecheckurl=https://github.com/jts/sga/tags
+
+# source URL. It specifies where to download from.
+source=git,git://github.com/jts/sga.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=https://github.com/jts/sga
+
+# download the package
+download
+
+# extract files
+#copyrep
+
+# configure
+shell
+cd src
+./autogen.sh
+./configure --prefix=$LOCAL_DIR --with-sparsehash=$LOCAL_DIR --with-bamtools=$LOCAL_DIR
+make
+EOC
+
+# make
+
+# make install
+custominstall
+cd src
+make install
+EOC

@@ -1,0 +1,37 @@
+
+#
+# Description: pbzip2
+# updatecheckurl=https://launchpad.net/pbzip2/+download
+
+# source URL. It specifies where to download from.
+source=http://compression.ca/pbzip2/pbzip2-1.1.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://compression.ca/pbzip2/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+make
+EOC
+
+# make install
+# makeinstall
+custominstall
+cp pbzip2 $BIN_DIR
+cp pbzip2.1 $MAN_DIR/man1
+
+EOC
+

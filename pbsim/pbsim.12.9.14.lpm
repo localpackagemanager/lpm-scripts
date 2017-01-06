@@ -1,0 +1,28 @@
+#
+# Description: PBSim: Read simulator for PacBio RS
+# updatecheckurl=https://code.google.com/archive/p/pbsim/downloads
+
+# source URL. It specifies where to download from.
+source=https://pbsim.googlecode.com/files/pbsim-1.0.3.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=12.9.14
+
+# URL. Just for information.
+url=https://code.google.com/p/pbsim/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall

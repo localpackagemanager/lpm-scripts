@@ -1,0 +1,33 @@
+
+#
+# Description: SOAP3-The alignment program in this package is optimized to work for multi-millions of short reads each time by running a multi-core CPU and the GPU concurrently.
+# Tested: SL6.1
+# updatecheckurl=http://soap.genomics.org.cn/
+
+# source URL. It specifies where to download from.
+source=http://soap.genomics.org.cn/down/soap3_aligner.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+ver=0.01
+
+# URL. Just for information.
+url=http://soap.genomics.org.cn/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+#make
+
+# make install
+#makeinstall
+custominstall
+cp * $LPM_BIN
+EOC

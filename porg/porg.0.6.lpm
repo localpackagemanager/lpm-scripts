@@ -1,0 +1,38 @@
+#
+# Description: Porg (Package organizer)
+# updatecheckurl=https://sourceforge.net/projects/porg/files/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/porg/files/porg-0.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://porg.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+./configure --prefix=$LOCAL_DIR --disable-grop --with-porg-logdir=$VAR_DIR/log
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+
+shell
+echo "Converting database ..."
+export PATH=$BIN_DIR:$PATH
+$BIN_DIR/paco2porg
+echo "Done."
+EOC
+

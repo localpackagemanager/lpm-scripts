@@ -1,0 +1,29 @@
+#
+# Description: seqtk
+# Tested: CentOS 6.5
+# updatecheckurl=https://github.com/lh3/seqtk/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/lh3/seqtk.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=seqtk
+# ver=
+
+# URL. Just for information.
+url=https://github.com/lh3/seqtk
+
+# download the package
+download
+
+# extract files
+
+# configure
+
+# make
+make
+
+# make install
+custominstall
+cp seqtk tabtk $BIN_DIR/
+EOC

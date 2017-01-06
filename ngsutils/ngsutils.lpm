@@ -1,0 +1,40 @@
+#
+# Description: NGSUtils: Tools for next-generation sequencing analysis
+#
+# Tested: CentOS6.6
+# updatecheckurl=https://github.com/ngsutils/ngsutils/releases
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/ngsutils/ngsutils.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=ngsutils
+# ver=
+
+# URL. Just for information.
+url=http://ngsutils.org
+
+# download the package
+download
+
+# extract files
+
+# configure
+
+
+# make install
+custominstall
+ngsutilsvd=`basename $PWD`
+mkdir -p $OPT_DIR/$ngsutilsvd
+rsync -av . $OPT_DIR/$ngsutilsvd
+rm -f $OPT_DIR/ngsutils
+ln -s $OPT_DIR/$ngsutilsvd $OPT_DIR/ngsutils
+cd $OPT_DIR/$ngsutilsvd
+make
+EOC
+
+loadstartup
+setini
+export PATH=$LPM_OPT/ngsutils/bin:$PATH
+EOC
+savestartup

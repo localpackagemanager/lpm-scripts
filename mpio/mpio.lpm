@@ -1,0 +1,31 @@
+
+#
+# Description: mpio library
+# Tested: CentOS 6.4
+# updatecheckurl=https://github.com/frsyuki/mpio/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/frsyuki/mpio.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=https://github.com/frsyuki/mpio/
+
+# download the package
+download
+
+# configure
+shell
+./bootstrap
+./configure --prefix=$LOCAL_DIR
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+

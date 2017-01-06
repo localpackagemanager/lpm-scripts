@@ -1,0 +1,40 @@
+#
+# lpm file for RepeatMasker
+# Description: RepeatMasker
+# Depends: recon, trf, rmblast
+# updatecheckurl=http://www.repeatmasker.org/RMDownload.html
+
+# source URL. It specifies where to download from.
+source=http://www.repeatmasker.org/RepeatMasker-open-4-0-3.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=RepeatMasker
+ver=open-4-0-3
+
+# URL. Just for information.
+url=http://www.repeatmasker.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+custominstall
+
+mkdir -p $OPT_DIR/RepeatMasker/RepeatMasker-${PACKAGE_VER}
+rsync -av RepeatMasker $OPT_DIR/RepeatMasker/RepeatMasker-${PACKAGE_VER}
+cd $OPT_DIR/RepeatMasker
+ln -fs RepeatMasker-${PACKAGE_VER} current
+cd current/RepeatMasker
+perl configure <<EOP
+
+
+
+
+2
+$BIN_DIR
+
+5
+EOP
+EOC

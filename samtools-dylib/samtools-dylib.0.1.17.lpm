@@ -1,0 +1,31 @@
+#
+# Description: samtools (Shared library. libbam)
+#
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/samtools/samtools/0.1.17/samtools-0.1.17.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://samtools.sourceforge.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure
+
+# make
+make dylib
+
+# make install
+custominstall
+install -c libbam.so.1 $LPM_LIB
+EOC
+

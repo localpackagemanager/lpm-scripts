@@ -1,0 +1,34 @@
+#
+# Description: RECON: a package for automated de novo identification of repeat families from genomic sequences
+# lpm file for RECON
+# updatecheckurl=http://www.repeatmasker.org/RepeatModeler.html
+
+# source URL. It specifies where to download from.
+source=http://www.repeatmasker.org/RECON-1.07.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=RECON
+ver=1.07
+
+# URL. Just for information.
+url=http://www.repeatmasker.org/RepeatModeler.html
+
+# download the package
+download
+
+# extract files
+extract
+
+shell
+cd src
+make install
+EOC
+
+custominstall
+mkdir -p $OPT_DIR/RECON/RECON-${PACKAGE_VER}
+rsync -av . $OPT_DIR/RECON/RECON-${PACKAGE_VER}
+cd $OPT_DIR/RECON/RECON-${PACKAGE_VER}/scripts
+sed -i -e '3s#.*#$path="'$OPT_DIR/RECON/RECON-${PACKAGE_VER}/bin/'";#' recon.pl
+cd $OPT_DIR/RECON
+ln -sf RECON-${PACKAGE_VER} current
+EOC

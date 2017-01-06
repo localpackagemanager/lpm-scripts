@@ -1,0 +1,34 @@
+#
+# Description: RNA-Seq by Expectation-Maximization
+# updatecheckurl=https://github.com/deweylab/RSEM/tags
+# lpm file for rsem
+# <note>
+# on systems having outdated libz library headers you may try:
+# lpm install libz 
+# env LPM_MAKE_OPTION='"CC=icc -L$HOME/lcl/lib"' lpm install rsem.lpm
+# to avoid the problem that the linker fails to find gzopen64().
+# Use icc because it can distinguish cpp and c suffixes.
+# </note>
+# script author: T. Nishiyama
+
+# source URL. It specifies where to download from.
+source=http://deweylab.biostat.wisc.edu/rsem/src/rsem-1.2.18.tar.gz
+
+# URL. Just for information.
+url=http://deweylab.biostat.wisc.edu/rsem/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+make 
+
+# make install
+custominstall
+install rsem-* $BIN_DIR
+cp rsem_perl_utils.pm $BIN_DIR
+EOC
+

@@ -1,0 +1,36 @@
+#
+# Description: SOAPdenovo-prepare
+# updatecheckurl=http://soap.genomics.org.cn/
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/soapdenovo2/files/Prepare/Prepare-src-v2.0.tgz/download
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=SOAPdenovo-prepare
+ver=2.0
+
+# URL. Just for information.
+url=http://soap.genomics.org.cn/soapdenovo.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd prepare
+make
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd prepare
+cp finalFusion $BIN_DIR/
+EOC
+

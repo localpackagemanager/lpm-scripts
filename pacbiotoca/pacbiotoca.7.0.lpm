@@ -1,0 +1,75 @@
+#
+# Description: PacBioToCA
+# Tested: CentOS 6.3
+# updatecheckurl=https://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/wgs-assembler/wgs-assembler/wgs-7.0/wgs-7.0.tar.bz2
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=pacbiotoca
+ver=7.0
+
+# URL. Just for information.
+url=http://wgs-assembler.sourceforge.net/wiki/index.php/PacBioToCA
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+replaceregexp
+wgs-${PACKAGE_VER}/src/AS_global.h
+/AS_READ_MAX_NORMAL_LEN_BITS/
+s/11/15/
+# make
+shell
+cd wgs-${PACKAGE_VER}
+
+cd kmer
+./configure.sh
+make $LPM_MAKE_OPTION install
+cd ..
+
+cd src
+patch AS_PBR/CorrectPacBio.cc << EOF
+--- CorrectPacBio.cc.orig       2013-01-12 17:29:52.706948456 +0900
++++ CorrectPacBio.cc    2013-01-12 17:30:57.238940576 +0900
+@@ -152,6 +152,8 @@
+      if (includeLib[fr.gkFragment_getLibraryIID()] == TRUE) {
+         frgToLib[fr.gkFragment_getReadIID()] = TRUE;
+         counter++;
++     } else {
++        frgToLib[fr.gkFragment_getReadIID()] = FALSE;
+      }
+      frgToLen[fr.gkFragment_getReadIID()] = len;
+   }
+EOF
+#the line below did not work probably because it does not assume parallel make
+#make $LPM_MAKE_OPTION
+make
+
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd wgs-${PACKAGE_VER}
+
+mkdir -p $OPT_DIR/pacbiotoca/${PACKAGE_VER}
+cp -r Linux-amd64/bin $OPT_DIR/pacbiotoca/${PACKAGE_VER}/
+pushd $OPT_DIR/pacbiotoca
+ln -fs ${PACKAGE_VER} current
+popd
+
+EOC
+
+shell
+echo "-------------------------------------------------------------------"
+echo "PacBioToCA has been installed to $OPT_DIR/pacbiotoca/current"
+echo "-------------------------------------------------------------------"
+EOC
