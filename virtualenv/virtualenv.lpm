@@ -1,0 +1,35 @@
+#
+# Description: virtualenv (for Python)
+# Tested: CentOS6.4
+# updatecheckurl=https://virtualenv.pypa.io/en/latest/changes.html
+
+# source URL. It specifies where to download from.
+# source=
+
+getlatest virtualenv https://pypi.python.org/pypi/virtualenv
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=automatically inferred
+#ver=auto
+
+# URL. Just for information.
+url=http://pypi.python.org/pypi/virtualenv
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make -j 4
+
+# make install
+custominstall
+python virtualenv.py $LOCAL_DIR
+
+EOC
+

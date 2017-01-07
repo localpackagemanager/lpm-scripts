@@ -1,0 +1,16 @@
+# Description: viennarna
+# updatecheckurl=http://www.tbi.univie.ac.at/RNA/changelog.html
+# source URL. It specifies where to download from.
+source=http://www.tbi.univie.ac.at/~ronny/RNA/packages/source/ViennaRNA-2.1.5.tar.gz
+# URL. Just for information.
+url=http://www.tbi.univie.ac.at/~ronny/RNA/
+# download the package
+download
+# extract files
+extract
+# configure
+configure --disable-openmp
+# make
+make
+# make install
+makeinstall

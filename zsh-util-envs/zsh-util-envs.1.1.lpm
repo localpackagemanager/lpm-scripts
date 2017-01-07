@@ -1,0 +1,46 @@
+#
+# Description: Set environmental variables and define utility functions for zsh
+# Tested: SL6.1
+
+# source URL. It specifies where to download from.
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=zsh-util-envs
+ver=1.1
+
+# URL. Just for information.
+
+# download the package
+
+# extract files
+
+# configure
+
+# make
+
+# set scripts
+loadstartup
+setini
+export EDITOR=vi
+export SVN_EDITOR=vi
+export LESS=--tabs=4
+
+# SSH to a specified node, and change to the same directory, assuming that the directory is shared among nodes.
+function cnode() {
+        ssh -t $1 "$SHELL -c 'cd $PWD; env CNODE_STACK=\"$HOST $CNODE_STACK\" $SHELL'"
+}
+
+# Show the node stack that shows the route you have logged in.
+function cstack() {
+        echo $CNODE_STACK
+}
+
+# Enable extended glob.
+if [ "$SHELL" = "/bin/zsh" ]; then
+	setopt extended_glob
+fi
+
+EOC
+savestartup
+
+# make install

@@ -1,0 +1,36 @@
+
+#
+# Description: zlib
+# Tested: CentOS 6.4
+# updatecheckurl=http://www.zlib.net/
+
+# source URL. It specifies where to download from.
+source=http://www.zlib.net/zlib-1.2.8.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://www.zlib.net/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure --shared
+
+replaceregexp
+Makefile
+/CFLAGS/
+s/CFLAGS=/CFLAGS=-fPIC /
+
+# make
+make -j 4
+
+# make install
+makeinstall
+

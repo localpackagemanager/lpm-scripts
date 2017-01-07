@@ -1,0 +1,260 @@
+#
+# lpm file for wise
+# Description: genewise is the homology based gene prediction program
+# updatecheckurl=http://www.ebi.ac.uk/~birney/wise2/
+# source URL. It specifies where to download from.
+source=http://www.ebi.ac.uk/~birney/wise2/wise2.4.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=wise
+ver=2.4.1
+
+# URL. Just for information.
+url=http://www.ebi.ac.uk/~birney/wise2/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make
+shell
+patch -p 0 << "EOP"
+diff -Nur wise2.4.1/src/base/wiserandom.h wise2.4.1-p6/src/base/wiserandom.h
+--- wise2.4.1/src/base/wiserandom.h	2007-09-08 17:05:30.000000000 +0900
++++ wise2.4.1-p6/src/base/wiserandom.h	2013-10-21 16:28:09.845170821 +0900
+@@ -6,7 +6,7 @@
+ #include "wisebase.h"
+ #include <time.h>
+ #include <limits.h>
+-
++#include <stdlib.h>
+ 
+ 
+ 
+diff -Nur wise2.4.1/src/external/mott/mott_api.c wise2.4.1-p6/src/external/mott/mott_api.c
+--- wise2.4.1/src/external/mott/mott_api.c	2003-03-01 00:14:26.000000000 +0900
++++ wise2.4.1-p6/src/external/mott/mott_api.c	2013-10-21 16:28:09.849170952 +0900
+@@ -1,6 +1,8 @@
+ #include<stdio.h>
+ #include<limits.h>
+ #include<math.h>
++#include<stdlib.h>
++#include<ctype.h>
+ #include"gapstat.h"
+ 
+ double default_lambda0, default_K0, default_Kplus, default_H, default_r, default_s, default_alpha;
+diff -Nur wise2.4.1/src/HMMer2/Makefile wise2.4.1-p6/src/HMMer2/Makefile
+--- wise2.4.1/src/HMMer2/Makefile	2001-06-18 22:59:47.000000000 +0900
++++ wise2.4.1-p6/src/HMMer2/Makefile	2013-10-21 16:28:09.873171740 +0900
+@@ -38,7 +38,7 @@
+ 
+ HDRS =  config.h funcs.h globals.h structs.h version.h
+ 
+-SQUIDHDRS = gnuregex.h squid.h sqfuncs.h 
++SQUIDHDRS =  squid.h sqfuncs.h 
+ 
+ SRC =   hmmalign.c    hmmbuild.c        hmmcalibrate.c    hmmconvert.c\
+         hmmpfam.c     hmmsearch.c\
+@@ -48,7 +48,7 @@
+ 	plan9.c	      prior.c           tophits.c         trace.c
+ 
+ SQUIDSRC = aligneval.c  alignio.c   cluster.c   dayhoff.c\
+-	   file.c       getopt.c    gnuregex.c  interleaved.c\
++	   file.c       getopt.c     interleaved.c\
+ 	   iupac.c      msf.c       revcomp.c   selex.c\
+ 	   sqerror.c    sqio.c      sre_ctype.c sre_math.c\
+ 	   sre_string.c stack.c     translate.c types.c\
+@@ -59,7 +59,7 @@
+         masks.o       misc.o            modelmakers.o     plan7.o\
+ 	plan9.o       prior.o           tophits.o         trace.o\
+         aligneval.o   alignio.o         cluster.o         dayhoff.o\
+-	file.o        getopt.o          gnuregex.o        interleaved.o\
++	file.o        getopt.o                  interleaved.o\
+ 	iupac.o       msf.o             revcomp.o         selex.o\
+ 	sqerror.o     sqio.o            sre_ctype.o       sre_math.o\
+ 	sre_string.o  stack.o           translate.o       types.o\
+diff -Nur wise2.4.1/src/HMMer2/prior.c wise2.4.1-p6/src/HMMer2/prior.c
+--- wise2.4.1/src/HMMer2/prior.c	2001-06-18 22:59:50.000000000 +0900
++++ wise2.4.1-p6/src/HMMer2/prior.c	2013-10-21 16:28:09.877171872 +0900
+@@ -3,7 +3,7 @@
+  * 
+  * Support for Dirichlet prior data structure, p7prior_s.
+  */
+-
++#include <string.h>
+ #include "config.h"
+ #include "structs.h"
+ #include "funcs.h" 
+diff -Nur wise2.4.1/src/HMMer2/sre_string.c wise2.4.1-p6/src/HMMer2/sre_string.c
+--- wise2.4.1/src/HMMer2/sre_string.c	2001-06-18 22:59:51.000000000 +0900
++++ wise2.4.1-p6/src/HMMer2/sre_string.c	2013-10-21 16:30:16.077316798 +0900
+@@ -17,7 +17,7 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <ctype.h>
+-#include "gnuregex.h"
++#include "regex.h"
+ #include "squid.h"
+ 
+ 
+diff -Nur wise2.4.1/src/makefile wise2.4.1-p6/src/makefile
+--- wise2.4.1/src/makefile	2006-04-03 21:02:29.000000000 +0900
++++ wise2.4.1-p6/src/makefile	2013-10-21 16:28:09.909172923 +0900
+@@ -37,7 +37,7 @@
+ # CFLAGS = -c -O3 -pthread `glib-config --cflags`
+ 
+ # normal linux/bsd/mac flags
+-CFLAGS = -c -O3  `glib-config --cflags`
++CFLAGS = -c -O3 --std=c99 -D_POSIX_SOURCE -D_BSD_SOURCE `pkg-config glib-2.0 --cflags`
+ 
+ 
+ EXTRALIBS = -lm
+diff -Nur wise2.4.1/src/models/makefile wise2.4.1-p6/src/models/makefile
+--- wise2.4.1/src/models/makefile	2006-04-17 17:28:12.000000000 +0900
++++ wise2.4.1-p6/src/models/makefile	2013-10-21 16:28:09.913173055 +0900
+@@ -192,10 +192,10 @@
+ 	$(CC) -o psw psw.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o   $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS)
+ 
+ scanwisep.o : scanwisep.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) -I../external/mott `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) -I../external/mott `pkg-config glib-2.0 --cflags` $?
+ 
+ hsp2aln_sw.o : hsp2aln_sw.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ scanwisep_mysql.o : scanwisep.c
+ 	$(CC)  $(CFLAGS) -DSCAN_MYSQL -I../corba -I../external/mott -I../mysql/protein_index/ -I/usr/local/mysql/include scanwisep.c 
+@@ -226,25 +226,25 @@
+ 
+ 
+ scanwisep : scanwisep.o seqaligndisplay.o proteinsw.o sw_wrap.o abc.o pba.o hsp2aln_sw.o
+-	$(CC) -o scanwisep scanwisep.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   $(LFLAGS)  -L../external/mott -lmott -ldyna_glib -ldyna  -lwisebase  $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o scanwisep scanwisep.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   $(LFLAGS)  -L../external/mott -lmott -ldyna_glib -ldyna  -lwisebase  $(EXTRALIBS) `pkg-config --libs glib-2.0` -lpthread
+ 
+ test_gwhsp : test_gwhsp.o genewisehsp.o
+-	$(CC) -o test_gwhsp test_gwhsp.o genewisehsp.o $(LFLAGS) -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o test_gwhsp test_gwhsp.o genewisehsp.o $(LFLAGS) -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `pkg-config --libs glib-2.0` -lpthread
+ 
+ localcishit.o : localcishit.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ promoterwise.o : promoterwise.c  
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ promoterwise : promoterwise.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o
+-	$(CC) -g -o promoterwise promoterwise.o localdba.o  localcishit.o localcispara.o dbadisplay.o  motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o  pairwiseshortdna.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -g -o promoterwise promoterwise.o localdba.o  localcishit.o localcispara.o dbadisplay.o  motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o  pairwiseshortdna.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `pkg-config --libs glib-2.0` -lpthread
+ 
+ test_deng : test_deng.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o
+-	$(CC) -o test_deng test_deng.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o test_deng test_deng.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `pkg-config --libs glib-2.0` -lpthread
+ 
+ promotercluster : promotercluster.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o
+-	$(CC) -o promotercluster promotercluster.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o promotercluster promotercluster.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  $(EXTRALIBS) `pkg-config --libs glib-2.0` -lpthread
+ 
+ dnawise : dnawise.o dnahmm.o dnahmmdp.o seqaligndisplay.o 
+ 	$(CC) -o dnawise dnawise.o dnahmm.o dnahmmdp.o  seqaligndisplay.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase  -lpthread
+@@ -345,11 +345,11 @@
+ CC = cc
+ #CFLAGS = -c -O2  -pg -I../base/ -I../dynlibsrc/
+ #CFLAGS = -c -O2 -DPTHREAD -DHAS_PTHREAD_SETSCOPE  -DUNIX  -I../base/ -I../dynlibsrc/ -I.
+-CFLAGS = -c -g3 -O2  -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `glib-config --cflags`
++CFLAGS = -c -g3 -O2  -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `pkg-config glib-2.0 --cflags`
+ #CFLAGS = -c  -g -DHAS_PTHREAD_SETSCOPE -DUNIX -I../base/ -I../dynlibsrc/ `glib-config --cflags`
+ #LFLAGS =  -L../base/ -L../dynlibsrc/ -L../HMMer2/  
+ 
+-LFLAGS =  -L../base/ -L../dynlibsrc/ -L$(HMMER_LIBS) -lpthread `glib-config --libs`
++LFLAGS =  -L../base/ -L../dynlibsrc/ -L$(HMMER_LIBS) -lpthread `pkg-config --libs glib-2.0`
+ AR_OPTIONS = ru
+ 
+ RANLIB_NEEDED = 0
+diff -Nur wise2.4.1/src/models/phasemodel.c wise2.4.1-p6/src/models/phasemodel.c
+--- wise2.4.1/src/models/phasemodel.c	2007-09-08 17:05:32.000000000 +0900
++++ wise2.4.1-p6/src/models/phasemodel.c	2013-10-21 16:28:09.925173448 +0900
+@@ -20,7 +20,7 @@
+     if( line[0] == '#' ) {
+       continue;
+     }
+-    if( !isnumber(line[0]) ) {
++    if( !isdigit(line[0]) ) {
+       warn("Bad looking line in intron file, %s",line);
+       continue;
+     }
+diff -Nur wise2.4.1/src/network/makefile wise2.4.1-p6/src/network/makefile
+--- wise2.4.1/src/network/makefile	2006-04-20 01:39:46.000000000 +0900
++++ wise2.4.1-p6/src/network/makefile	2013-10-21 16:28:09.945174105 +0900
+@@ -3,8 +3,8 @@
+ 
+ CC = cc
+ INCFLAGS = -I../base/  -I../socket -I../dynlibsrc -I../dnaindex
+-CFLAGS =    -O2  -c -pthread  -DUNIX  -I../base/ -I../socket -I../dynlibsrc -I../dnaindex `glib-config --cflags`
+-LFLAGS =  -g -L../base/ -L../socket -L../dynlibsrc -L../dnaindex -lm `glib-config --libs`
++CFLAGS =    -O2  -c -pthread  -DUNIX  -I../base/ -I../socket -I../dynlibsrc -I../dnaindex `pkg-config glib-2.0 --cflags`
++LFLAGS =  -g -L../base/ -L../socket -L../dynlibsrc -L../dnaindex -lm `pkg-config --libs glib-2.0`
+ AR_OPTIONS = ru
+ 
+ RANLIB_NEEDED = 0
+diff -Nur wise2.4.1/src/socket/functionclient.c wise2.4.1-p6/src/socket/functionclient.c
+--- wise2.4.1/src/socket/functionclient.c	2007-09-08 17:05:33.000000000 +0900
++++ wise2.4.1-p6/src/socket/functionclient.c	2013-10-21 16:28:09.953174369 +0900
+@@ -178,10 +178,10 @@
+ 
+   server.sin_family = AF_INET;
+   hp = gethostbyname(host);
+-  bcopy( hp->h_addr, &server.sin_addr, hp->h_length);
++  bcopy( hp->h_addr_list[0], &server.sin_addr, hp->h_length);
+   server.sin_port = htons(port);
+ 
+-  connect(out->socket, &server, sizeof(server));
++  connect(out->socket, (struct sockaddr*) &server, sizeof(server));
+   
+ 
+   return out;
+diff -Nur wise2.4.1/src/socket/simplesocketclient.c wise2.4.1-p6/src/socket/simplesocketclient.c
+--- wise2.4.1/src/socket/simplesocketclient.c	2007-09-08 17:05:33.000000000 +0900
++++ wise2.4.1-p6/src/socket/simplesocketclient.c	2013-10-21 16:28:09.965174763 +0900
+@@ -62,7 +62,7 @@
+ 
+   server.sin_family = AF_INET;
+   hp = gethostbyname(hostname);
+-  bcopy( hp->h_addr, &server.sin_addr, hp->h_length);
++  bcopy( hp->h_addr_list[0], &server.sin_addr, hp->h_length);
+   server.sin_port = htons(port_number);
+ 
+   connect(handle->socket, &server, sizeof(server));
+EOP
+rm wise2.4.1/src/HMMer2/gnuregex.c
+rm wise2.4.1/src/HMMer2/gnuregex.h
+#-make all in src directory
+cd wise2.4.1/src
+make $LPM_MAKE_OPTION all
+#-cd into dyc go make dyc
+cd dyc
+make $LPM_MAKE_OPTION linux
+
+EOC
+
+custominstall
+
+mkdir -p $OPT_DIR/wise
+rsync -av --exclude="*.o" wise${PACKAGE_VER} $OPT_DIR/wise/
+# the line below is needed for the shell execution in the last part of this file
+cd $OPT_DIR/wise
+ln -fs wise${PACKAGE_VER} current
+
+EOC
+
+loadstartup
+setini
+export WISE_HOME=$LPM_OPT/wise/current
+export WISECONFIGDIR=$WISE_HOME/wisecfg
+export PATH=$WISE_HOME/src/bin:$PATH
+EOC
+savestartup
+

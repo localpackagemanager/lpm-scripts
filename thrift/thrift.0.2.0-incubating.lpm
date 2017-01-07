@@ -1,0 +1,35 @@
+#
+# Description: Thrift (wo/ruby, w/boost)
+# updatecheckurl=https://thrift.apache.org/download
+
+# source URL. It specifies where to download from.
+source=http://ftp.kddilabs.jp/infosystems/apache/incubator/thrift/0.2.0-incubating/thrift-0.2.0-incubating.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=https://thrift.apache.org/download
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+export PY_PREFIX=$LOCAL_DIR
+export JAVA_PREFIX=$LOCAL_DIR
+./configure --prefix=$LOCAL_DIR --without-ruby --with-boost=$LOCAL_DIR
+perl -pe "if(/MAKEFILE/){s|INSTALLDIRS.*|PREFIX=$LOCAL_DIR|}" -i lib/perl/Makefile
+EOC
+
+# make
+# don't make -j. it seems that the Makefile isn't compatible with parallel make because we saw build problems with -j, while not without -j.
+make
+
+# make install
+makeinstall
+

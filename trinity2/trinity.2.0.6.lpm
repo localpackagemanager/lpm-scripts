@@ -1,0 +1,37 @@
+#
+# lpm file for trinity RNA seq de novo assembly tool
+# updatecheckurl=https://github.com/trinityrnaseq/trinityrnaseq/tags
+# Description: RNA-Seq De novo Assembly Using Trinity
+# Tested: CentOS 6.6
+
+# <note> 
+# A number of dependent packages are included in the software distribution.
+# Some do not seem to compile with icc. So, stay with gcc.
+# </note>
+
+# source URL. It specifies where to download from.
+source=https://github.com/trinityrnaseq/trinityrnaseq/archive/v2.0.6.tar.gz
+#http://sourceforge.net/projects/trinityrnaseq/files/trinityrnaseq-r20110519.tgz
+# getlatest trinityrnaseq http://sourceforge.net/projects/trinityrnaseq/files/ 
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=trinityrnaseq
+ver=2.0.6
+
+# URL. Just for information.
+url=http://trinityrnaseq.github.io/
+
+# download the package
+download
+
+# extract files
+extract
+
+# make install
+#makeinstall
+custominstall
+mkdir -p $OPT_DIR/trinityrnaseq/trinityrnaseq-${PACKAGE_VER}
+rsync -a  . $OPT_DIR/trinityrnaseq/trinityrnaseq-${PACKAGE_VER}
+cd $OPT_DIR/trinityrnaseq/trinityrnaseq-${PACKAGE_VER}
+make $LPM_MAKE_OPTION
+EOC

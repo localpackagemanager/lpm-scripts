@@ -1,0 +1,32 @@
+#
+# Description: UT Genome Browser
+# updatecheckurl=http://maven.utgenome.org/repository/artifact/org/utgenome/utgb-shell/
+
+# source URL. It specifies where to download from.
+source=http://maven.utgenome.org/repository/artifact/org/utgenome/utgb-shell/1.5.9/utgb-shell-1.5.9-bin.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=utgb
+ver=1.5.9
+
+# URL. Just for information.
+url=http://utgenome.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+# make
+
+# make install
+# makeinstall
+custominstall
+cp -r utgb-toolkit-$PACKAGE_VER/ $OPT_DIR/
+ln -s $OPT_DIR/utgb-toolkit-$PACKAGE_VER/bin/utgb $BIN_DIR/
+EOC

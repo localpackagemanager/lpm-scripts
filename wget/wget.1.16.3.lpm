@@ -1,0 +1,18 @@
+#
+# Description: Wget
+# Tested: OS X Yosemite
+# updatecheckurl=http://ftp.gnu.org/gnu/wget/
+# --with-ssl=openssl suppress requirement of gnutls,
+# which has further dependencies and complicate the
+# installation
+
+source=http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.gz
+
+# URL. Just for information.
+url=https://www.gnu.org/software/wget/
+
+download
+extract
+configure --with-ssl=openssl
+make
+makeinstall

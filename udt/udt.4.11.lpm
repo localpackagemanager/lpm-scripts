@@ -1,0 +1,40 @@
+#
+# Description: UDP file transfer library
+# updatecheckurl=https://sourceforge.net/projects/udt/files/
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/udt/udt/4.11/udt.sdk.4.11.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=udt
+ver=4.11
+
+# URL. Just for information.
+url=http://udt.sourceforge.net/index.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd udt4
+make
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd udt4
+cd src
+cp libudt.a  $LIB_DIR
+cp libudt.so $LIB_DIR
+cp udt.h     $INCLUDE_DIR
+
+EOC
+

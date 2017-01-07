@@ -1,0 +1,50 @@
+#
+# Description: TransDecoder (Find Coding Regions Within Transcripts)
+# Tested: RHEL 6.1
+# updatecheckurl=https://sourceforge.net/projects/transdecoder/files/OLDER/
+# <note>
+#   Note 3rd_party/cd-hit of this package was not successfully compiled with g++ 4.8.1.
+#   Thus, this script tries to find icpc (Intel C++ compiler) and then
+#   if the g++ --version match 4.8., try to use system g++ at /usr/bin/g++
+#   irrespective of the path. 
+#   There might be some compiler option to allow successful compilation with
+#   g++ 4.8, which was not investigated though.
+# </note>
+#
+# This script and above comment was written by tomoakin@staff.kanazawa-u.ac.jp
+
+# source URL. It specifies where to download from.
+source=http://downloads.sourceforge.net/project/transdecoder/TransDecoder_r20131117.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=TransDecoder
+ver=r20131117
+
+# URL. Just for information.
+url=https://github.com/TransDecoder/TransDecoder
+
+# download the package
+download
+
+# extract files
+extract
+
+# make install
+#makeinstall
+custominstall
+mkdir -p $OPT_DIR/TransDecoder
+rsync -av TransDecoder_${PACKAGE_VER} $OPT_DIR/TransDecoder
+cd $OPT_DIR/TransDecoder
+ln -fs TransDecoder_${PACKAGE_VER} current
+cd TransDecoder_${PACKAGE_VER}
+if  which icpc > /dev/null 2>&1; then 
+  cd 3rd_party/cd-hit && make CC=icpc openmp=yes && make install PREFIX=../../util/bin
+elif g++ --version  | grep 4.8.; then
+  cd 3rd_party/cd-hit && make CC=/usr/bin/g++ openmp=yes && make install PREFIX=../../util/bin
+fi
+cd $OPT_DIR/TransDecoder/TransDecoder_${PACKAGE_VER}
+make
+
+EOC
+
+

@@ -1,0 +1,32 @@
+#
+# Description: Trimmomatic: java based Illumina sequence trimming tool
+# Tested: CentOS 6.6
+# updatecheckurl=http://www.usadellab.org/cms/?page=trimmomatic
+
+# source URL. It specifies where to download from.
+source=http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.33.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=http://www.usadellab.org/cms/?page=trimmomatic
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+cp -rp  Trimmomatic-0.33 $OPT_DIR/
+EOC
+

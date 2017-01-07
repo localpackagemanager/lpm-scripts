@@ -1,0 +1,22 @@
+#
+# Description: UCSC genome browser related tools
+# Tested: CentOS6.6
+# updatecheckurl=http://hgdownload.cse.ucsc.edu/admin/exe/
+
+source=http://hgdownload.cse.ucsc.edu/admin/exe/userApps.src.tgz
+url=http://hgdownload.cse.ucsc.edu/admin/exe/
+
+download
+
+extract
+
+shell
+  cd userApps
+  make $LPM_MAKE_OPTION
+EOC
+
+custominstall
+  cd userApps
+  install -c bin/* $BIN_DIR
+EOC
+

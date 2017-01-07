@@ -1,0 +1,45 @@
+#
+# Description: X10 lang
+# Tested: CentOS 6.1
+# updatecheckurl=http://x10-lang.org/releases/x10-release-list.html
+
+# source URL. It specifies where to download from.
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://sourceforge.net/projects/x10/files/x10/2.5.3/x10-2.5.3_linux_x86_64.tgz
+if{$osname eq 'linux' && $btype eq 'x86'} source=http://sourceforge.net/projects/x10/files/x10/2.5.3/x10-2.5.3_linux_x86.tgz
+if{$osname eq 'darwin'} source=http://sourceforge.net/projects/x10/files/x10/2.5.3/x10-2.5.3_macosx_x86.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=x10
+ver=2.5.3
+
+# URL. Just for information.
+url=http://x10-lang.org/
+
+# download the package
+download
+
+# extract files
+# extract
+
+# configure
+# configure
+
+# make
+
+# make install
+custominstall
+mkdir $OPT_DIR/x10
+mkdir $OPT_DIR/x10/$PACKAGE_VER
+cd $OPT_DIR/x10/
+mkdir $PACKAGE_VER
+ln -fs $PACKAGE_VER current
+cd $PACKAGE_VER
+tar xvfz $ARCHIVE_FILE
+EOC
+
+loadstartup
+setini
+export PATH=$LPM_OPT/x10/current/bin:$PATH
+EOC
+savestartup
+

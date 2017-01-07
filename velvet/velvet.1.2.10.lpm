@@ -1,0 +1,38 @@
+#
+# Description: velvet assembler
+# Tested: CentOS 6.6
+# updatecheckurl=http://www.ebi.ac.uk/~zerbino/velvet/
+
+# source URL. It specifies where to download from.
+source=http://www.ebi.ac.uk/~zerbino/velvet/velvet_1.2.10.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=velvet
+ver=1.2.10
+
+# URL. Just for information.
+url=http://www.ebi.ac.uk/~zerbino/velvet/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+shell
+cd velvet_1.2.10
+make
+EOC
+
+# make install
+# makeinstall
+custominstall
+cd velvet_1.2.10
+cp velveth velvetg      $BIN_DIR
+#cp shu*.pl                              $BIN_DIR
+
+EOC

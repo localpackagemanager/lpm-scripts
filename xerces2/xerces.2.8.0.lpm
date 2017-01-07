@@ -1,0 +1,39 @@
+#
+# Description: Xerces C++ 2 (XML Parser)
+# updatecheckurl=http://xerces.apache.org/xerces-c/releases_plan.html
+
+# source URL. It specifies where to download from.
+source=http://mirror.olnevhost.net/pub/apache//xerces/c/2/sources/xerces-c-src_2_8_0.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=xerces2
+ver=2.8.0
+
+# URL. Just for information.
+url=http://xerces.apache.org/xerces-c/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+cd xerces-c-src_2_8_0
+export XERCESCROOT=`pwd`
+cd src/xercesc
+./runConfigure -p linux -c gcc -x g++ -r pthread -b 64 -P $LOCAL_DIR
+make -j 8
+EOC
+
+# make
+custominstall
+cd xerces-c-src_2_8_0
+export XERCESCROOT=`pwd`
+cd src/xercesc
+
+make install
+EOC
+
+

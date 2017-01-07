@@ -1,0 +1,41 @@
+#
+# Description: TopHat is a fast splice junction mapper for RNA-Seq reads.
+# Tested: CentOS 6.6
+# updatecheckurl=http://ccb.jhu.edu/software/tophat/downloads/
+# host moved to jhu.edu
+
+# source URL. It specifies where to download from.
+# Use this URL for 64bit (Intel/AMD x86_64)
+if{$osname eq 'linux' && $btype eq 'x86_64'} source=http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
+# x86 32 bit may not be supported
+
+# Use this URL for MacOS X (Intel x86_64)
+if{$osname eq 'darwin'} source=http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.OSX_x86_64.tar.gz
+
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://ccb.jhu.edu/software/tophat/index.shtml
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+#configure --with-bam=$LIB_DIR/../ --with-bam-libdir=$LIB_DIR/
+custominstall
+cd tophat*/
+mkdir -p $BIN_DIR/tophat
+cp * $BIN_DIR/tophat/
+EOC
+
+loadstartup
+setini
+export PATH=$PATH:$LPM_BIN/tophat
+EOC
+savestartup

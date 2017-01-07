@@ -1,0 +1,36 @@
+#
+# Description: ttyrec (TTY RECorder)
+# updatecheckurl=http://0xcc.net/ttyrec/#download
+
+# source URL. It specifies where to download from.
+source=http://0xcc.net/ttyrec/ttyrec-1.0.8.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+#ver=
+
+# URL. Just for information.
+url=http://0xcc.net/ttyrec/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+make
+
+# make install
+# makeinstall
+custominstall
+
+cp ttyplay ttyrec ttytime       $BIN_DIR
+mkdir $MAN_DIR/man1
+cp ttyplay.1 ttyrec.1 ttytime.1 $MAN_DIR/man1
+
+EOC
+

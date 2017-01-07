@@ -1,0 +1,44 @@
+#
+# Description: Celera Assembler 8.1
+# Tested: RHEL 6.4
+# updatecheckurl=https://sourceforge.net/projects/wgs-assembler/files/
+
+# source URL. It specifies where to download from.
+#source=http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-8.1/wgs-8.1.tar.bz2
+source=http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-8.1/wgs-8.1-Linux-amd64.tar.bz2
+# use binary
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=wgs
+ver=8.1
+
+# URL. Just for information.
+url=http://sourceforge.net/apps/mediawiki/wgs-assembler/index.php
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+# configure
+
+# make
+
+# make install
+# makeinstall
+custominstall
+#cd wgs-${PACKAGE_VER}
+
+mkdir -p $OPT_DIR/wgs/${PACKAGE_VER}
+cp -r Linux-amd64 $OPT_DIR/wgs/${PACKAGE_VER}/
+cd $OPT_DIR/wgs
+ln -fs ${PACKAGE_VER} current
+EOC
+
+shell
+echo "-------------------------------------------------------------------"
+echo "Celera Assembler has been installed to $OPT_DIR/wgs"
+echo "-------------------------------------------------------------------"
+EOC

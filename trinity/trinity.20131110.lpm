@@ -1,0 +1,37 @@
+#
+# lpm file for trinity RNA seq de novo assembly tool
+# updatecheckurl=https://github.com/trinityrnaseq/trinityrnaseq/tags
+# Description: RNA-Seq De novo Assembly Using Trinity
+# Tested: RHEL 6.4
+
+# <note> 
+# A number of dependent packages are included in the software distribution.
+# Some do not seem to compile with icc. So, stay with gcc.
+# </note>
+
+# source URL. It specifies where to download from.
+source=http://sourceforge.net/projects/trinityrnaseq/files/trinityrnaseq_r20131110.tar.gz
+#http://sourceforge.net/projects/trinityrnaseq/files/trinityrnaseq-r20110519.tgz
+# getlatest trinityrnaseq http://sourceforge.net/projects/trinityrnaseq/files/ 
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=trinityrnaseq
+ver=20131110
+
+# URL. Just for information.
+url=http://trinityrnaseq.sourceforge.net
+
+# download the package
+download
+
+# extract files
+extract
+
+# make install
+#makeinstall
+custominstall
+mkdir -p $OPT_DIR/trinityrnaseq/trinityrnaseq-r${PACKAGE_VER}
+rsync -a  trinityrnaseq_r20131110/ $OPT_DIR/trinityrnaseq/trinityrnaseq-r${PACKAGE_VER}
+cd $OPT_DIR/trinityrnaseq/trinityrnaseq-r${PACKAGE_VER}
+make $LPM_MAKE_OPTION
+EOC

@@ -1,0 +1,46 @@
+#
+# Description: UDR: UDT-enabled rsync
+# updatecheckurl=https://github.com/LabAdvComp/UDR/tags
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/LabAdvComp/UDR.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=UDR
+#ver=
+
+# URL. Just for information.
+url=https://github.com/LabAdvComp/UDR
+
+# download the package
+download
+
+# extract files
+#extract
+
+# configure
+# configure
+
+# make
+shell
+if [ x$OS = xlinux ] ; then
+    make $LPM_MAKE_OPT
+else
+    echo OS=$OS ARCH=$ARCH
+    if [ x$OS = xdarwin ] ; then
+        make $LPM_MAKE_OPT -e os=OSX arch=IA32
+    else
+        echo "Sorry, this platform is not supported."
+        echo "If you see the line above is 'OS= ARCH=',"
+        echo "you should update LPM first (yours is outdated)."
+        ls /dev/nonexistentpath 2> /dev/null
+    fi
+fi
+EOC
+
+# make install
+# makeinstall
+custominstall
+cp src/udr $BIN_DIR/
+EOC
+

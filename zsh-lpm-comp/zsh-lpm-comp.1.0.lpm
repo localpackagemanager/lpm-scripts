@@ -1,0 +1,48 @@
+#
+# Description: Set zsh autocompletion for LPM
+# Tested: CentOS 6.4
+
+# source URL. It specifies where to download from.
+source=https://www.dropbox.com/s/1y4c8lt29chz0b8/_lpm
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=zsh-lpm-comp
+ver=1.0
+topdirname=.
+
+# URL. Just for information.
+
+# download the package
+download
+
+# extract files
+
+# configure
+shell
+mkdir $SHARE_DIR/zsh
+mkdir $SHARE_DIR/zsh/site-functions
+true
+EOC
+
+# make
+
+# set scripts
+loadstartup
+setini
+fpath=("$LPM_SHARE/zsh/site-functions" $fpath)
+EOC
+savestartup
+
+# make install
+custominstall
+cp $ARCHIVE_DIR/_lpm $SHARE_DIR/zsh/site-functions
+
+echo "If you have not enabled zshcomp yet, you have to add the"
+echo "following two lines to the end of ~/.zshrc"
+echo
+echo "autoload -U compinit"
+echo "compinit"
+echo
+echo "You need to restart the shell to see the effect."
+EOC
+

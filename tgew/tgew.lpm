@@ -1,0 +1,33 @@
+
+#
+# Description: Tiny Grid Engine Wrapper
+# Tested: CentOS6.3
+# updatecheckurl=https://github.com/mkasa/TGEW
+
+# source URL. It specifies where to download from.
+source=git,https://github.com/mkasa/TGEW.git
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=TGEW
+# ver=
+
+# URL. Just for information.
+url=https://github.com/mkasa/TGEW
+
+# download the package
+download
+
+# extract files
+
+# configure
+shell
+./waf configure --prefix=$LOCAL_DIR
+./waf build
+EOC
+
+# make
+
+# make install
+custominstall
+./waf install
+EOC

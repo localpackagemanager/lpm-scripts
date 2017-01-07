@@ -1,0 +1,34 @@
+
+#
+# Description: ptexlive
+# Tested: SL6.1
+# updatecheckurl=ftp://ftp.kddilabs.jp/CTAN/systems/texlive/tlnet/
+
+# source URL. It specifies where to download from.
+source=http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+ver=20120411
+
+# URL. Just for information.
+url=http://mirror.ctan.org/systems/texlive/tlnet/
+
+# download the package
+download
+
+# extract files
+extract
+# configure
+# configure
+
+shell
+cd install-tl*/
+./install-tl
+EOC
+
+# make
+# make
+
+# make install
+# makeinstall

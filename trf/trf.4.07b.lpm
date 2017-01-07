@@ -1,0 +1,23 @@
+#
+# Description: Tandem Repeats Finder
+# updatecheckurl=http://tandem.bu.edu/trf/trf.download.html
+
+# source URL. It specifies where to download from.
+source=http://tandem.bu.edu/trf/downloads/trf407b.linux64
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=trf
+ver=4.07b
+
+# URL. Just for information.
+url=http://tandem.bu.edu/trf/trf.html
+
+# download the package
+download
+sha256 a3a760c7b74c9603fbc08d95e8fa696c00f35a2f179b0bd63b2b13757ad3b471
+md5 26d83513f43f1456542123c6fe8eecf2
+
+# extract files
+custominstall
+install -cm 755 $ARCHIVE_FILE $BIN_DIR/trf 
+EOC
+
