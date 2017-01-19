@@ -1,0 +1,63 @@
+#
+# Description: PacBio SMRT Analysis Pipeline (CentOS binary)
+# Depends: wget
+# Tested: CentOS 6.6
+# updatecheckurl=http://www.pacb.com/support/software-downloads/
+
+# source URL. It specifies where to download from.
+source=https://s3.amazonaws.com/files.pacb.com/software/smrtanalysis/2.3.0/smrtanalysis_2.3.0.140936.run
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=smrtanalysis-centos
+ver=2.3.0.140936.p5
+
+# URL. Just for information.
+url=http://www.pacb.com/devnet/
+
+# download the package
+download
+
+# extract files
+# extract
+
+# configure
+# configure
+shell
+patchfile=smrtanalysis-patch_2.3.0.140936.p5.run
+if [ -e $ARCHIVE_DIR/$patchfile ] ; then
+    echo $ARCHIVE_DIR/$patchfile exists. Will not download.
+else
+    cd $ARCHIVE_DIR
+    echo $ARCHIVE_DIR/$patchfile does not exist.
+    wget https://s3.amazonaws.com/files.pacb.com/software/smrtanalysis/2.3.0/$patchfile
+fi
+EOC
+
+# make
+shell
+patchfile=smrtanalysis-patch_2.3.0.140936.p5.run
+    export SMRT_ROOT=$OPT_DIR/smrtanalysis
+    bash $ARCHIVE_FILE --rootdir $SMRT_ROOT --extract-only --patchfile $ARCHIVE_DIR/$patchfile
+EOC
+
+# make install
+# makeinstall
+custominstall
+patchfile=smrtanalysis-patch_2.3.0.140936.p5.run
+    export SMRT_ROOT=$OPT_DIR/smrtanalysis
+    bash $ARCHIVE_FILE --rootdir $SMRT_ROOT --no-extract --patchfile $ARCHIVE_DIR/$patchfile
+EOC
+
+loadstartup
+setini
+export SMRT_ROOT=$LPM_OPT/smrtanalysis/current
+. $($LPM_OPT/smrtanalysis/admin/bin/getsetupfile)
+EOC
+savestartup
+
+shell
+echo PacBio SMRT Analysis Pipeline has its own license terms.
+echo Please see http://pacbiodevnet.com/Terms_of_Use.html before use.
+echo If you wish to uninstall SMRT Analysis Pipeline, please type \'lpm uninstall smrtanalysis\'
+EOC
+
