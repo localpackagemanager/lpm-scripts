@@ -1,0 +1,35 @@
+#
+# Description: Integrative Genomics Viewer Tools
+# Tested: Scientific Linux release 6.7 (Carbon)
+# updatecheckurl=http://www.broadinstitute.org/software/igv/ReleaseNotes
+
+# source URL. It specifies where to download from.
+source=igvtools_2.3.91.zip
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=igvtools
+ver=2.3.91
+
+# URL. Just for information.
+url=http://www.broadinstitute.org/igv/
+
+# download the package
+manualdownload
+
+# extract files
+extract
+
+# make install
+custominstall
+mkdir $OPT_DIR/IGVTools
+mkdir $OPT_DIR/IGVTools/${PACKAGE_VER}
+mv IGVTools $OPT_DIR/IGVTools/${PACKAGE_VER}/
+cd $OPT_DIR/IGVTools
+ln -fs ${PACKAGE_VER}/IGVTools current
+cd $BIN_DIR
+cat > igvtools << EOF
+#!/bin/sh
+exec $OPT_DIR/IGVTools/current/igvtools $*
+EOF
+chmod 755 igvtools
+EOC
