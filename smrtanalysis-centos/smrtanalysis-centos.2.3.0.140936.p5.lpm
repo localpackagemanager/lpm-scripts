@@ -24,6 +24,10 @@ download
 # configure
 shell
 patchfile=smrtanalysis-patch_2.3.0.140936.p5.run
+if [ ! -x `which ifconfig` ] ; do
+    echo “Please install net-tools first.”
+    exit
+done
 if [ -e $ARCHIVE_DIR/$patchfile ] ; then
     echo $ARCHIVE_DIR/$patchfile exists. Will not download.
 else
