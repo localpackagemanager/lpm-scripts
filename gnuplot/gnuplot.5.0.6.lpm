@@ -1,0 +1,30 @@
+#
+# Description: gnuplot
+# Depends: 
+# Tested: Scientific Linux release 6.7 (Carbon)
+# updatecheckurl=http://www.gnuplot.info/download.html
+
+# source URL. It specifies where to download from.
+source=https://downloads.sourceforge.net/project/gnuplot/gnuplot/5.0.6/gnuplot-5.0.6.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://www.gnuplot.info/index.html
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
