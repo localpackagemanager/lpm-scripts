@@ -1,0 +1,33 @@
+#
+# Description: Perl
+# Depends: 
+# Tested: Scientific Linux release 6.7 (Carbon)
+# updatecheckurl=https://www.perl.org/get.html
+
+# source URL. It specifies where to download from.
+source=http://www.cpan.org/src/5.0/perl-5.24.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=https://www.perl.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+shell
+./configure.gnu -Dprefix=$LOCAL_DIR 
+EOC
+
+# make
+make
+
+# make install
+makeinstall
+
