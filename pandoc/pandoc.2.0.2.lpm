@@ -1,0 +1,22 @@
+#
+# Description: Lua
+# Tested: Red Hat Enterprise Linux ComputeNode release 6.9 (Santiago)
+# updatecheckurl=https://github.com/jgm/pandoc/releases
+
+# source URL. It specifies where to download from.
+source=https://github.com/jgm/pandoc/releases/download/2.0.2/pandoc-2.0.2-linux.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=
+#ver=
+
+# URL. Just for information.
+url=https://pandoc.org/
+
+# download the package
+download
+
+# makeinstall
+custominstall
+tar xzf $ARCHIVE_DIR/pandoc-2.0.2-linux.tar.gz --strip-components 1 -C $LOCAL_DIR
+EOC
