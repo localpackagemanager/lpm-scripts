@@ -1,0 +1,30 @@
+#
+# Description: GHC The Glasgow Haskell Compiler
+# Tested: Red Hat Enterprise Linux ComputeNode release 6.9 (Santiago)
+# updatecheckurl=http://emboss.sourceforge.net/download/
+
+# source URL. It specifies where to download from.
+source=ftp://emboss.open-bio.org/pub/EMBOSS/old/6.5.0/EMBOSS-6.5.7.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+#name=  automatically inferred
+ver=6.5.7
+
+# URL. Just for information.
+url=http://emboss.sourceforge.net/download/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+
+configure
+
+# make
+make
+
+# make install
+makeinstall
