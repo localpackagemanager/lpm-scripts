@@ -1,0 +1,31 @@
+#
+# Description: 
+# Depends: 
+# Tested: Red Hat Enterprise Linux ComputeNode release 6.9 (Santiago)
+# updatecheckurl=ftp://ftp.sanger.ac.uk/pub/resources/software/seqtools/PRODUCTION/
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.sanger.ac.uk/pub/resources/software/seqtools/PRODUCTION/seqtools-4.44.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=http://www.sanger.ac.uk/science/tools/seqtools
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+
