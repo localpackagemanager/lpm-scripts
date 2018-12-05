@@ -1,0 +1,29 @@
+#
+# Description: GNU ncurses
+# Tested: Red Hat Enterprise Linux ComputeNode release 6.10 (Santiago)
+#
+
+# source URL. It specifies where to download from.
+source=ftp://ftp.invisible-island.net/ncurses/ncurses-6.1.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+# name=
+# ver=
+
+# URL. Just for information.
+url=https://www.gnu.org/software/ncurses/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
