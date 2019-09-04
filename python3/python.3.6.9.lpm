@@ -1,0 +1,35 @@
+#
+# Description: python3 (3.x)
+# Tested: CentOS 6.5
+# updatecheckurl=https://www.python.org/downloads/
+
+# source URL. It specifies where to download from.
+source=http://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=python3
+ver=3.6.9
+topdirname=Python-3.6.9
+
+# URL. Just for information.
+url=http://www.python.org/
+
+# download the package
+download
+
+# extract files
+extract
+
+# configure
+configure
+
+# make
+make
+
+# make install
+makeinstall
+
+custominstall
+python3 -c 'import sys,os; dirs = [p + ".lpm_save_under_this_dir" for p in sys.path if os.path.isdir(p) and not p.endswith(".egg")]; [os.system("touch " + i) for i in dirs]'
+EOC
+
