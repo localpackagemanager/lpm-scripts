@@ -21,7 +21,7 @@ download
 extract
 
 # configure
-configure
+configure --enable-shared
 
 # make
 make
