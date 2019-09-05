@@ -28,7 +28,7 @@ EOC
 
 loadstartup
 setini
-export GOPATH=$HOME/.go
+export GOPATH=$HOME/go
 EOC
 savestartup
 
