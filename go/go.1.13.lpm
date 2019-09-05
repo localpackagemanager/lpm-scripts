@@ -1,0 +1,36 @@
+#
+# Description: Golang
+
+# source URL. It specifies where to download from.
+source=https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+
+# package name and version. You can omit it when it can be inferred from the source URL.
+name=go
+ver=1.13
+
+# URL. Just for information.
+url=https://golang.org/
+
+# download the package
+download
+
+# make install
+custominstall
+mkdir $OPT_DIR/go
+mkdir $OPT_DIR/go/$PACKAGE_VER
+cd $OPT_DIR/go/
+mkdir $PACKAGE_VER
+ln -fs $PACKAGE_VER current
+cd $PACKAGE_VER
+tar xvfz $ARCHIVE_FILE
+cd $BIN_DIR
+ln -sf $OPT_DIR/go/current/bin/go .
+ln -sf $OPT_DIR/go/current/bin/gofmt .
+EOC
+
+loadstartup
+setini
+export GOPATH=$HOME/.go
+EOC
+savestartup
+
