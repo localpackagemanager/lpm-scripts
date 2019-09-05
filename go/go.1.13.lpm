@@ -16,13 +16,11 @@ download
 
 # make install
 custominstall
-mkdir $OPT_DIR/go
-mkdir $OPT_DIR/go/$PACKAGE_VER
+mkdir -p $OPT_DIR/go
 cd $OPT_DIR/go/
-mkdir $PACKAGE_VER
-ln -fs $PACKAGE_VER current
-cd $PACKAGE_VER
 tar xvfz $ARCHIVE_FILE
+mv go $PACKAGE_VER
+ln -fs $PACKAGE_VER current
 cd $BIN_DIR
 ln -sf $OPT_DIR/go/current/bin/go .
 ln -sf $OPT_DIR/go/current/bin/gofmt .
